@@ -1,15 +1,8 @@
 import React from "react"
 import { Link } from "gatsby"
 import styled from "@emotion/styled"
-import { css } from "@emotion/core"
 
 import { rhythm } from "../utils/typography"
-
-const home_link_styles = css`
-  box-shadow: none;
-  text-decoration: none;
-  color: inherit;
-`
 
 const StyledLink = styled(Link)`
   padding-left: ${rhythm(1.5)};
