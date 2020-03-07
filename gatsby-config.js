@@ -1,4 +1,4 @@
-var site_title = `Daris Strickland's Blog`
+var site_title = `Daris Strickland`
 
 module.exports = {
   siteMetadata: {
@@ -13,6 +13,7 @@ module.exports = {
     },
   },
   plugins: [
+    `gatsby-plugin-emotion`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -67,7 +68,7 @@ module.exports = {
         background_color: `#ffffff`,
         theme_color: `#663399`,
         display: `minimal-ui`,
-        icon: `content/assets/favicon.ico`,
+        icon: `content/assets/profile-pic.jpg`,
       },
     },
     `gatsby-plugin-react-helmet`,
@@ -75,6 +76,7 @@ module.exports = {
       resolve: `gatsby-plugin-typography`,
       options: {
         pathToConfigModule: `src/utils/typography`,
+        omitGoogleFont: true
       },
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality

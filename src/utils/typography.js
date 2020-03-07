@@ -1,26 +1,15 @@
 import Typography from "typography"
 
-import gray from "gray-percentage"
 import { MOBILE_MEDIA_QUERY } from "typography-breakpoint-constants"
 
 const theme = {
-  title: "Wordpress Theme 2016",
-  baseFontSize: "16px",
+  title: "My Theme",
+  baseFontSize: "18px",
   baseLineHeight: 1.75,
   scaleRatio: 5 / 2,
-  googleFonts: [
-    {
-      name: "PT Sans",
-      styles: ["700", "700i"],
-    },
-    {
-      name: "PT Serif",
-      styles: ["400", "400i", "700", "700i"],
-    },
-  ],
   headerFontFamily: ["PT Sans", "Arial", "Helvetica", "sans-serif"],
   bodyFontFamily: ["PT Serif", "Georgia", "serif"],
-  bodyColor: "hsla(0,0%,0%,0.9)",
+  bodyColor: "#1a2309",
   headerWeight: 700,
   bodyWeight: 400,
   boldWeight: 700,
@@ -30,11 +19,11 @@ const theme = {
     },
     blockquote: {
       ...scale(1 / 5),
-      color: gray(41),
+      color: "#53606e",
       fontStyle: "italic",
       paddingLeft: rhythm(13 / 16),
       marginLeft: rhythm(-1),
-      borderLeft: `${rhythm(3 / 16)} solid ${gray(10)}`,
+      borderLeft: `${rhythm(3 / 16)} solid #223345`,
     },
     "blockquote > :last-child": {
       marginBottom: 0,
@@ -74,15 +63,13 @@ const theme = {
       fontStyle: "italic",
     },
     a: {
-      boxShadow: "0 1px 0 0 currentColor",
-      color: "#007acc",
-      textDecoration: "none",
+      color: "#711743",
     },
     "a:hover,a:active": {
-      boxShadow: "none",
+      textDecoration: "none",
     },
     "mark,ins": {
-      background: "#007acc",
+      background: "#711743",
       color: "white",
       padding: `${rhythm(1 / 16)} ${rhythm(1 / 8)}`,
       textDecoration: "none",
@@ -90,17 +77,13 @@ const theme = {
   }),
 }
 
-
-
 theme.overrideThemeStyles = () => {
   return {
     "a.gatsby-resp-image-link": {
-      boxShadow: `none`,
+      textDecoration: "none",
     },
   }
 }
-
-delete theme.googleFonts
 
 const typography = new Typography(theme)
 
