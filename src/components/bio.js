@@ -1,12 +1,5 @@
-/**
- * Bio component that queries for data
- * with Gatsby's useStaticQuery component
- *
- * See: https://www.gatsbyjs.org/docs/use-static-query/
- */
-
 import React from "react"
-import {useStaticQuery, graphql, Link} from "gatsby"
+import { useStaticQuery, graphql } from "gatsby"
 import Image from "gatsby-image"
 import styled from "@emotion/styled"
 
@@ -61,7 +54,7 @@ const Bio = () => {
       />
       <p>
         Written by <strong>{author.name}</strong> {author.summary} <br />
-        <Span>LinkedIn: <a href="" title="LinkedIn Profile"><LinkedInIcon /></a></Span>
+        <Span>LinkedIn: <a href="https://www.linkedin.com/in/daris-strickland-868a9269" target="_blank" rel="noopener noreferrer" title="LinkedIn Profile"><LinkedInIcon /></a></Span>
       </p>
     </div>
   )

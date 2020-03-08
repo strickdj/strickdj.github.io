@@ -1,14 +1,17 @@
 import React from "react"
 import { Link } from "gatsby"
 import styled from "@emotion/styled"
+import isPropValid from "@emotion/is-prop-valid"
 
 import { rhythm } from "../utils/typography"
 import LinkedInIcon from "@material-ui/icons/LinkedIn"
 
-const StyledLink = styled(Link)`
+const StyledLink = styled(Link, {
+  shouldForwardProp: prop => isPropValid(prop)
+})`
   padding-left: ${rhythm(1.5)};
   box-shadow: none;
-  font-style: ${props => props.active ? 'italic' : 'normal'};
+  font-style: ${props => props.isCurrent ? 'italic' : 'normal'};
 `
 
 const StyledA = styled("a")`
@@ -33,17 +36,22 @@ const Nav = ({ location }) => {
   return (
     <nav>
       <Ul>
-        <li className={location.pathname === rootPath ? "active" : ""}>
-          <StyledLink title="Home" active={location.pathname === rootPath} to="/">home</StyledLink>
+        <li>
+          <StyledLink title="Home" isCurrent={location.pathname === rootPath} to="/">home</StyledLink>
         </li>
-        <li className={location.pathname === "/about" ? "active" : ""}>
-          <StyledLink title="About Me" active={location.pathname === "/about"} to="/about">about me</StyledLink>
+        <li>
+          <StyledLink title="About Me" isCurrent={location.pathname === "/about"} to="/about">about me</StyledLink>
         </li>
-        <li className={location.pathname === "/contact" ? "active" : ""}>
-          <StyledLink title="Contact Me" active={location.pathname === "/contact"} to="/contact">contact me</StyledLink>
+        <li>
+          <StyledLink title="Contact Me" isCurrent={location.pathname === "/contact"} to="/contact">contact me</StyledLink>
         </li>
-        <li className={location.pathname === "/contact" ? "active" : ""}>
-          <StyledA href="" title="LinkedIn Profile"><LinkedInIcon /></StyledA>
+        <li>
+          <StyledA target="_blank"
+                   rel="noopener noreferrer"
+                   href="https://www.linkedin.com/in/daris-strickland-868a9269"
+                   title="LinkedIn Profile">
+            <LinkedInIcon />
+          </StyledA>
         </li>
       </Ul>
     </nav>

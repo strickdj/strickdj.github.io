@@ -7,7 +7,6 @@ import Grid from "@material-ui/core/Grid"
 
 import { rhythm } from "../utils/typography"
 import Nav from "../components/nav"
-import LinkedInIcon from "@material-ui/icons/LinkedIn"
 
 const Container = styled.div`
   min-height: 100%;

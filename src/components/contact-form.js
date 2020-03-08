@@ -63,7 +63,7 @@ function ContactForm() {
 
       <br/>
 
-      <Button variant="contained" color="primary" type="submit">
+      <Button variant="contained" type="submit">
         Contact
       </Button>
 
