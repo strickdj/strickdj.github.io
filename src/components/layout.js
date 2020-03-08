@@ -2,9 +2,12 @@ import React from "react"
 import { Link } from "gatsby"
 import styled from "@emotion/styled"
 import { Global, css } from "@emotion/core"
+// import CssBaseline from '@material-ui/core/CssBaseline';
+import Grid from "@material-ui/core/Grid"
 
 import { rhythm } from "../utils/typography"
 import Nav from "../components/nav"
+import LinkedInIcon from "@material-ui/icons/LinkedIn"
 
 const Container = styled.div`
   min-height: 100%;
@@ -22,12 +25,8 @@ const Container = styled.div`
   align-content: stretch;
 `
 
-const FrontPageH = styled.h1`
+const SiteHeading = styled.h1`
   margin-bottom: ${rhythm(1.5)};
-  margin-top: 0;
-`
-
-const SubPageH = styled.h2`
   margin-top: 0;
 `
 
@@ -42,29 +41,11 @@ const Footer = styled.footer`
   justify-content: space-between;
 `
 
-const Header = styled.header`
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-`
-
 const Layout = ({ location, title, children }) => {
-  const rootPath = `${__PATH_PREFIX__}/`
-
-  const home_link = (
-    <Link css={home_link_styles} to={`/`}>
-      {title}
-    </Link>
-  )
-
-  const header = location.pathname === rootPath ? (
-    <FrontPageH>{home_link}</FrontPageH>
-  ) : (
-    <SubPageH>{home_link}</SubPageH>
-  )
 
   return (
     <Container>
+
       <Global
         styles={css`
         html, body, #___gatsby, #gatsby-focus-wrapper {
@@ -73,11 +54,22 @@ const Layout = ({ location, title, children }) => {
         }
       `}
       />
-      <Header>
-        {header}
-        <Nav />
-      </Header>
+      <header>
+        <Grid container spacing={3} alignItems="baseline">
+          <Grid item sm={12} md={6}>
+            <SiteHeading>
+              <Link css={home_link_styles} to={`/`}>
+                {title}
+              </Link>
+            </SiteHeading>
+          </Grid>
+          <Grid item sm={12} md={6}>
+            <Nav location={location}/>
+          </Grid>
+        </Grid>
+      </header>
       <main>{children}</main>
+
       <Footer>
         <div>
           © {new Date().getFullYear()} Daris Strickland

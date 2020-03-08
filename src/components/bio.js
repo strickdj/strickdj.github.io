@@ -6,10 +6,16 @@
  */
 
 import React from "react"
-import { useStaticQuery, graphql } from "gatsby"
+import {useStaticQuery, graphql, Link} from "gatsby"
 import Image from "gatsby-image"
+import styled from "@emotion/styled"
 
 import { rhythm } from "../utils/typography"
+import LinkedInIcon from "@material-ui/icons/LinkedIn"
+
+const Span = styled("span")`
+  display: flex;
+`
 
 const Bio = () => {
   const data = useStaticQuery(graphql`
@@ -54,7 +60,8 @@ const Bio = () => {
         }}
       />
       <p>
-        Written by <strong>{author.name}</strong> {author.summary}
+        Written by <strong>{author.name}</strong> {author.summary} <br />
+        <Span>LinkedIn: <a href="" title="LinkedIn Profile"><LinkedInIcon /></a></Span>
       </p>
     </div>
   )
