@@ -2,7 +2,7 @@ import chunk from "lodash/chunk"
 import shuffle from "lodash/shuffle"
 import zipObject from "lodash/zipObject"
 
-const EMPTY_CELL = 0
+export const EMPTY_CELL = 0
 
 function genTokenMap() {
   // const seed = Math.ceil(Math.random() * 9)

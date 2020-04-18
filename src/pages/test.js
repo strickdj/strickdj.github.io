@@ -6,7 +6,7 @@ import Button from "@material-ui/core/Button"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
-import {randomBoard, checkBoard, solve} from "../utils/sudoku"
+import {randomBoard, checkBoard, solve, EMPTY_CELL} from "../utils/sudoku"
 
 
 const GameGrid = styled.div`
@@ -71,7 +71,6 @@ function numberIsValid(num) {
 }
 
 const TestPage = ({ data, location }) => {
-  //todo fix starting pos and generate board...
   const [startingPos, setStartingPos] = useState(randomBoard())
   const [board, setBoard] = useState(startingPos.slice())
   const [errors, setErrors] = useState([])
@@ -84,7 +83,7 @@ const TestPage = ({ data, location }) => {
 
     // deleting a number is always valid
     if(event.currentTarget.value === "") {
-      b[index_1d] = null
+      b[index_1d] = EMPTY_CELL
       setBoard(b)
       return
     }
@@ -98,11 +97,27 @@ const TestPage = ({ data, location }) => {
 
   }
 
-  const handleReset = (e) => {
-    setBoard(sarting_pos.slice())
-    setErrors([])
+  const handleReset = () => {
+    setBoard(startingPos.slice())
+    setErrors(errors => [])
   }
 
+  const handleCheckBoard = () => {
+    setErrors(errors => checkBoard(board))
+  }
+
+  const handleGenerate = () => {
+    const starting_pos = randomBoard()
+    setStartingPos(pos => starting_pos)
+    setBoard(board => starting_pos)
+  }
+
+  const handleSolve = () => {
+    setBoard(board => {
+      solve(board)
+      return board.slice()
+    })
+  }
 
   return (
     <Layout location={location} title={siteTitle}>
@@ -115,14 +130,14 @@ const TestPage = ({ data, location }) => {
         <Button
           variant="outlined"
           color="primary"
-          onClick={() => setErrors(checkBoard(board))}
+          onClick={handleCheckBoard}
         >Check Board</Button>
 
         {/* todo add an extra step to prevent accidental clicks */}
         <Button
           variant="outlined"
           color="secondary"
-          onClick={() => setBoard(randomBoard())}
+          onClick={handleGenerate}
         >Generate New Puzzle</Button>
 
         {/* todo add an extra step to prevent accidental clicks */}
@@ -135,10 +150,7 @@ const TestPage = ({ data, location }) => {
         <Button
           variant="outlined"
           color="secondary"
-          onClick={() => {
-            solve(board)
-            setBoard(board.slice())
-          }}
+          onClick={handleSolve}
         >Solve</Button>
       </ActionPalette>
 
@@ -160,17 +172,14 @@ const TestPage = ({ data, location }) => {
                   style.background = 'rgba(255, 0, 0, .5)'
                 }
                 return (
-                  <Tile key={`${i}-${j}`} id={`cell-${i}-${j}`} style={style}>
+                  <Tile key={index_1d} style={style}>
                     {/*{`${i}-${j}`}<br/>*/}
                     {/*{index_1d}*/}
-
-                    {sarting_pos[index_1d] === 0 ? (
+                    {startingPos[index_1d] === 0 ? (
                       <Input type="text" value={board[index_1d] || ""} onChange={handleChange.bind(null, index_1d)}/>
                     ) : (
-                      <CellSpan>{sarting_pos[index_1d]}</CellSpan>
+                      <CellSpan>{startingPos[index_1d]}</CellSpan>
                     )}
-
-
                   </Tile>
                 )
               })}
