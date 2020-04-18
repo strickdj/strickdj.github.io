@@ -6,7 +6,7 @@ import Layout from "../components/layout"
 import SEO from "../components/seo"
 import ContactForm from "../components/contact-form"
 
-const BlogIndex = ({ data, location }) => {
+const ContactPage = ({ data, location }) => {
   const siteTitle = data.site.siteMetadata.title
 
   return (
@@ -23,7 +23,7 @@ const BlogIndex = ({ data, location }) => {
   )
 }
 
-export default BlogIndex
+export default ContactPage
 
 export const pageQuery = graphql`
   query {

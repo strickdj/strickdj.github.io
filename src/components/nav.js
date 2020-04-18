@@ -46,6 +46,9 @@ const Nav = ({ location }) => {
           <StyledLink title="Contact Me" isCurrent={location.pathname === "/contact"} to="/contact">contact me</StyledLink>
         </li>
         <li>
+          <StyledLink title="Test" isCurrent={location.pathname === "/test"} to="/test">test</StyledLink>
+        </li>
+        <li>
           <StyledA target="_blank"
                    rel="noopener noreferrer"
                    href="https://www.linkedin.com/in/daris-strickland-868a9269"
