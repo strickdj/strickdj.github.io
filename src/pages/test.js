@@ -2,10 +2,12 @@ import React, { useState }  from "react"
 import { graphql } from "gatsby"
 import range from "lodash/range"
 import styled from "@emotion/styled"
+import Button from "@material-ui/core/Button"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
-import {rowIsValid, colIsValid, sectorIsValid, createEmptyBoard, solve, printBoard, testBoard} from "../utils/solver"
+import {testBoard, checkBoard, solve} from "../utils/sudoku"
+
 
 const GameGrid = styled.div`
   display: grid;
@@ -13,9 +15,14 @@ const GameGrid = styled.div`
   grid-template-rows: repeat(9, 1fr);
   column-gap: 0;
   row-gap: 0;
-  min-height: 50vw;
-  width: 50vw;
-  min-width: 500px;
+  margin: 0 auto;
+  width: 80vw;
+  max-width: 60vh;
+  min-width: 450px;
+  min-height: 450px;
+  height: 80vw;
+  max-height: 60vh;
+  font-size: 1rem;
 `
 
 const Tile = styled.div`
@@ -23,14 +30,29 @@ const Tile = styled.div`
   padding: 3px;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
-  align-items: flex-end;
+  justify-content: center;
+  align-items: center;
 `
 
 const Input = styled.input`
-  width: 50%;
+  width: 100%;
   max-width: 100%;
   max-height: 100%;
+`
+
+const ActionPalette = styled.div`
+  display: flex;
+  justify-content: space-between;
+  margin: 2rem auto;
+  width: 50vw;
+  min-width: 500px;
+`
+
+const CellSpan = styled.span`
+  color: #333;
+  font-size: 1.5rem;
+  justify-self: center;
+  align-self: center;
 `
 
 function numberIsValid(num) {
@@ -41,13 +63,11 @@ function numberIsValid(num) {
   }
   return false
 }
-//
-// const b = testBoard(1)
-// solve(b)
-// printBoard(b)
 
 const TestPage = ({ data, location }) => {
-  const [board, setBoard] = useState(testBoard(1));
+  const sarting_pos = testBoard(1)
+  const [board, setBoard] = useState(sarting_pos.slice())
+  const [errors, setErrors] = useState([])
 
   const siteTitle = data.site.siteMetadata.title
 
@@ -64,40 +84,63 @@ const TestPage = ({ data, location }) => {
 
     const value = parseInt(event.currentTarget.value, 10)
 
-    if(numberIsValid(value) && rowIsValid(value, index_1d, b) && colIsValid(value, index_1d, b) && sectorIsValid(value, index_1d, b)) {
+    if(numberIsValid(value)) {
       b[index_1d] = value
       setBoard(b)
     }
 
   }
 
+  const handleReset = (e) => {
+    setBoard(sarting_pos.slice())
+    setErrors([])
+  }
+
+
   return (
     <Layout location={location} title={siteTitle}>
       <SEO title="Testing" />
-
       <div>
         <h1>Sudoku</h1>
       </div>
 
-      <div>
-        {/* todo add an extra step to prevent accidental clicks */}
-        <p>
-          <button onClick={() => setBoard([])}>Generate New Puzzle</button>
-        </p>
-      </div>
+      <ActionPalette>
+        <Button
+          variant="outlined"
+          color="primary"
+          onClick={() => setErrors(checkBoard(board))}
+        >Check Board</Button>
 
-      <div>
         {/* todo add an extra step to prevent accidental clicks */}
-        <p>
-          <button onClick={() => setBoard(createEmptyBoard())}>Reset Board</button>
-        </p>
-      </div>
+        <Button
+          variant="outlined"
+          color="secondary"
+          onClick={() => console.log("function not implemented")}
+        >Generate New Puzzle</Button>
+
+        {/* todo add an extra step to prevent accidental clicks */}
+        <Button
+          variant="outlined"
+          color="secondary"
+          onClick={handleReset}
+        >Reset Board</Button>
+
+        <Button
+          variant="outlined"
+          color="secondary"
+          onClick={() => {
+            solve(board)
+            setBoard(board.slice())
+          }}
+        >Solve</Button>
+      </ActionPalette>
 
       <GameGrid>
         {range(1,10).map((i) => {
           return (
             <React.Fragment key={i}>
               {range(1,10).map((j) => {
+                const index_1d = (i - 1) * 9 + (j - 1)
                 const style = {}
 
                 if(j % 3 === 0 && j !== 9) {
@@ -106,12 +149,21 @@ const TestPage = ({ data, location }) => {
                 if(i % 3 === 0 && i !== 9) {
                   style.borderBottom = '3px solid black'
                 }
-                const index_1d = (i - 1) * 9 + (j - 1)
+                if(errors[index_1d] === true) {
+                  style.background = 'red'
+                }
                 return (
                   <Tile key={`${i}-${j}`} id={`cell-${i}-${j}`} style={style}>
                     {/*{`${i}-${j}`}<br/>*/}
                     {/*{index_1d}*/}
-                    <Input type="text" value={board[index_1d] || ""} onChange={handleChange.bind(null, index_1d)}/>
+
+                    {sarting_pos[index_1d] === 0 ? (
+                      <Input type="text" value={board[index_1d] || ""} onChange={handleChange.bind(null, index_1d)}/>
+                    ) : (
+                      <CellSpan>{sarting_pos[index_1d]}</CellSpan>
+                    )}
+
+
                   </Tile>
                 )
               })}
@@ -119,6 +171,7 @@ const TestPage = ({ data, location }) => {
           )
         })}
       </GameGrid>
+
     </Layout>
   )
 }
