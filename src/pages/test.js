@@ -6,7 +6,7 @@ import Button from "@material-ui/core/Button"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
-import {testBoard, checkBoard, solve} from "../utils/sudoku"
+import {randomBoard, checkBoard, solve} from "../utils/sudoku"
 
 
 const GameGrid = styled.div`
@@ -15,13 +15,13 @@ const GameGrid = styled.div`
   grid-template-rows: repeat(9, 1fr);
   column-gap: 0;
   row-gap: 0;
-  margin: 0 auto;
+  margin: 2rem auto;
   width: 80vw;
-  max-width: 60vh;
+  height: 80vw;
+  max-width: 80vh;
+  max-height: 80vh;
   min-width: 450px;
   min-height: 450px;
-  height: 80vw;
-  max-height: 60vh;
   font-size: 1rem;
 `
 
@@ -38,6 +38,12 @@ const Input = styled.input`
   width: 100%;
   max-width: 100%;
   max-height: 100%;
+  border: 0;
+  border-bottom: 1px dashed black;
+  font-size: 1.2rem;
+  text-align: center;
+  outline: none;
+  appearance: none;
 `
 
 const ActionPalette = styled.div`
@@ -50,7 +56,7 @@ const ActionPalette = styled.div`
 
 const CellSpan = styled.span`
   color: #333;
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   justify-self: center;
   align-self: center;
 `
@@ -65,8 +71,9 @@ function numberIsValid(num) {
 }
 
 const TestPage = ({ data, location }) => {
-  const sarting_pos = testBoard(1)
-  const [board, setBoard] = useState(sarting_pos.slice())
+  //todo fix starting pos and generate board...
+  const [startingPos, setStartingPos] = useState(randomBoard())
+  const [board, setBoard] = useState(startingPos.slice())
   const [errors, setErrors] = useState([])
 
   const siteTitle = data.site.siteMetadata.title
@@ -115,7 +122,7 @@ const TestPage = ({ data, location }) => {
         <Button
           variant="outlined"
           color="secondary"
-          onClick={() => console.log("function not implemented")}
+          onClick={() => setBoard(randomBoard())}
         >Generate New Puzzle</Button>
 
         {/* todo add an extra step to prevent accidental clicks */}
@@ -150,7 +157,7 @@ const TestPage = ({ data, location }) => {
                   style.borderBottom = '3px solid black'
                 }
                 if(errors[index_1d] === true) {
-                  style.background = 'red'
+                  style.background = 'rgba(255, 0, 0, .5)'
                 }
                 return (
                   <Tile key={`${i}-${j}`} id={`cell-${i}-${j}`} style={style}>

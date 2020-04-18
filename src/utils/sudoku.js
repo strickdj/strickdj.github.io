@@ -1,6 +1,17 @@
 import chunk from "lodash/chunk"
+import shuffle from "lodash/shuffle"
+import zipObject from "lodash/zipObject"
 
 const EMPTY_CELL = 0
+
+function genTokenMap() {
+  // const seed = Math.ceil(Math.random() * 9)
+  const values = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+  const tokens = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i']
+  const shuffled = shuffle(tokens)
+
+  return zipObject(shuffled, values)
+}
 
 const testBoards = [
   [
@@ -27,8 +38,18 @@ const testBoards = [
   ]
 ]
 
+const seedBoards = [["i","a","e","c",".",".","f","g",".","f","h",".","a",".","g",".","d",".","d","b","g","e","f",".",".",".",".","h",".","a",".","b","f","c","e","d",".","d",".",".",".","a",".",".",".",".",".",".",".",".",".",".","a",".",".","f",".","b",".",".",".",".",".","e",".","h","g","c",".","a",".","f",".",".",".","f","h",".",".","i","g"],["c",".","f","e",".","h","d",".",".","e","b",".",".",".",".",".",".",".",".","h","g",".",".",".",".","c","a",".",".","c",".","a",".",".","h",".","i",".",".","h","f","c",".",".","e",".","e",".",".","i",".","f",".",".","a","c",".",".",".",".","b","e",".",".",".",".",".",".",".",".","g","d",".",".","e","b",".","f","c",".","."]]
+
 export function testBoard(i) {
   return testBoards[i].slice()
+}
+
+export function randomBoard() {
+  const [board, _] = shuffle(seedBoards)
+
+  const tokenMap = genTokenMap()
+  tokenMap['.'] = 0
+  return board.map(token => tokenMap[token])
 }
 
 /**
