@@ -15,14 +15,6 @@ const Container = styled.div`
   margin-right: auto;
   max-width: ${rhythm(48)};
   padding: ${rhythm(1.5)} ${rhythm(3 / 4)};
-  display: grid;
-  grid-template-columns: auto;
-  grid-template-rows: auto 1fr auto;
-  grid-template-areas: 
-    "header"
-    "body"
-    "footer";
-  align-content: stretch;
 `
 
 const SiteHeading = styled.h1`
