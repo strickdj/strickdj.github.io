@@ -45,7 +45,19 @@ export function testBoard(i) {
 }
 
 export function randomBoard() {
-  const [board, _] = shuffle(seedBoards)
+  const board = shuffle(seedBoards).pop()
+  let i = shuffle([0,1,2,3,4]).pop()
+  switch(i) {
+    case 4:
+      board.reverse()
+      break
+    case 1:
+      rotateBoard(board)
+    case 2:
+      rotateBoard(board)
+    case 3:
+      rotateBoard(board)
+  }
 
   const tokenMap = genTokenMap()
   tokenMap['.'] = 0
@@ -189,4 +201,16 @@ export function printBoard(board) {
   for(let i = 0; i < a.length; i++) {
     console.log(JSON.stringify(a[i]))
   }
+}
+
+// Rotate by +90:
+// board is a 1d representation of a 2d array
+// (index_1d * 9 + 8)mod82 = index_1d position of rotated board
+function rotateBoard(board) {
+  const newBoard = []
+  for(let i = 0; i < board.length; i++) {
+    const rotated_i = (i * 9 + 8)%82
+    newBoard[rotated_i] = board[i]
+  }
+  return newBoard
 }
