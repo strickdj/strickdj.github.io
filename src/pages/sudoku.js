@@ -17,9 +17,13 @@ const GameGrid = styled.div`
   row-gap: 0;
   margin: 2rem auto;
   width: 80vw;
-  height: 80vw;
-  max-width: 80vh;
-  max-height: 80vh;
+  height: 100vw;
+  max-width: 60vh;
+  max-height: 60vh;
+  
+  @media (min-width: 740px) {
+    height: 80vw;
+  }
 `
 
 const Tile = styled.div`
@@ -170,7 +174,7 @@ const TestPage = ({ data, location }) => {
                     {/*{`${i}-${j}`}<br/>*/}
                     {/*{index_1d}*/}
                     {startingPos[index_1d] === 0 ? (
-                      <Input type="text" value={board[index_1d] || ""} onChange={handleChange.bind(null, index_1d)}/>
+                      <Input type="number" value={board[index_1d] || ""} onChange={handleChange.bind(null, index_1d)}/>
                     ) : (
                       <CellSpan>{startingPos[index_1d]}</CellSpan>
                     )}
