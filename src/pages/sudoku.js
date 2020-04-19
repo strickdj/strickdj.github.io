@@ -20,9 +20,6 @@ const GameGrid = styled.div`
   height: 80vw;
   max-width: 80vh;
   max-height: 80vh;
-  min-width: 450px;
-  min-height: 450px;
-  font-size: 1rem;
 `
 
 const Tile = styled.div`
@@ -40,7 +37,6 @@ const Input = styled.input`
   max-height: 100%;
   border: 0;
   border-bottom: 1px dashed black;
-  font-size: 1.2rem;
   text-align: center;
   outline: none;
   appearance: none;
@@ -48,15 +44,13 @@ const Input = styled.input`
 
 const ActionPalette = styled.div`
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   margin: 2rem auto;
-  width: 50vw;
-  min-width: 500px;
 `
 
 const CellSpan = styled.span`
   color: #333;
-  font-size: 1.2rem;
   justify-self: center;
   align-self: center;
 `

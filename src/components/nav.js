@@ -24,6 +24,7 @@ const Ul = styled.ul`
   padding: 0;
   list-style-type: none;
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
   @media (min-width: 960px) {
     justify-content: flex-end;

@@ -4,6 +4,7 @@ import styled from "@emotion/styled"
 import { Global, css } from "@emotion/core"
 // import CssBaseline from '@material-ui/core/CssBaseline';
 import Grid from "@material-ui/core/Grid"
+import "./layout.css"
 
 import { rhythm } from "../utils/typography"
 import Nav from "../components/nav"
@@ -44,7 +45,6 @@ const Layout = ({ location, title, children }) => {
 
   return (
     <Container>
-
       <Global
         styles={css`
         html, body, #___gatsby, #gatsby-focus-wrapper {
