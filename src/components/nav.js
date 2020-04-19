@@ -46,7 +46,7 @@ const Nav = ({ location }) => {
           <StyledLink title="Contact Me" isCurrent={location.pathname === "/contact"} to="/contact">contact me</StyledLink>
         </li>
         <li>
-          <StyledLink title="Test" isCurrent={location.pathname === "/test"} to="/test">test</StyledLink>
+          <StyledLink title="Test" isCurrent={location.pathname === "/sudoku"} to="/sudoku">sudoku</StyledLink>
         </li>
         <li>
           <StyledA target="_blank"
