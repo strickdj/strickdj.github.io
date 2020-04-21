@@ -44,6 +44,11 @@ const Input = styled.input`
   text-align: center;
   outline: none;
   appearance: none;
+  background: transparent;
+  ::-webkit-outer-spin-button { 
+    -webkit-appearance: none; 
+    margin: 0;
+  }
 `
 
 const ActionPalette = styled.div`
@@ -119,7 +124,7 @@ const TestPage = ({ data, location }) => {
 
   return (
     <Layout location={location} title={siteTitle}>
-      <SEO title="Testing" />
+      <SEO title="Sudoku" />
       <div>
         <h1>Sudoku</h1>
       </div>

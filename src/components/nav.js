@@ -3,19 +3,16 @@ import { Link } from "gatsby"
 import styled from "@emotion/styled"
 import isPropValid from "@emotion/is-prop-valid"
 
-import { rhythm } from "../utils/typography"
 import LinkedInIcon from "@material-ui/icons/LinkedIn"
 
 const StyledLink = styled(Link, {
   shouldForwardProp: prop => isPropValid(prop)
 })`
-  padding-left: ${rhythm(1.5)};
   box-shadow: none;
   font-style: ${props => props.isCurrent ? 'italic' : 'normal'};
 `
 
 const StyledA = styled("a")`
-  padding-left: ${rhythm(1.5)};
   box-shadow: none;
 `
 
@@ -25,7 +22,12 @@ const Ul = styled.ul`
   list-style-type: none;
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: space-between;
+  
+  li:first-child a {
+    padding-left: 0;
+  }
+  
   @media (min-width: 960px) {
     justify-content: flex-end;
   }
@@ -40,14 +42,14 @@ const Nav = ({ location }) => {
         <li>
           <StyledLink title="Home" isCurrent={location.pathname === rootPath} to="/">home</StyledLink>
         </li>
-        <li>
-          <StyledLink title="About Me" isCurrent={location.pathname === "/about"} to="/about">about me</StyledLink>
-        </li>
+        {/*<li>*/}
+        {/*  <StyledLink title="About Me" isCurrent={location.pathname === "/about"} to="/about">about me</StyledLink>*/}
+        {/*</li>*/}
         <li>
           <StyledLink title="Contact Me" isCurrent={location.pathname === "/contact"} to="/contact">contact me</StyledLink>
         </li>
         <li>
-          <StyledLink title="Test" isCurrent={location.pathname === "/sudoku"} to="/sudoku">sudoku</StyledLink>
+          <StyledLink title="Sudoku" isCurrent={location.pathname === "/sudoku"} to="/sudoku">sudoku</StyledLink>
         </li>
         <li>
           <StyledA target="_blank"
