@@ -2,7 +2,6 @@ import React, { useState }  from "react"
 import { graphql } from "gatsby"
 import range from "lodash/range"
 import styled from "@emotion/styled"
-import Button from "@material-ui/core/Button"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"

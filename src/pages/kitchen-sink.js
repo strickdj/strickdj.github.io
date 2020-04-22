@@ -98,21 +98,21 @@ const KitchenSinkPage = ({ data, location }) => {
       <section>
         <hgroup>
           <h1>h1 HTML5 Kitchen Sink</h1>
-          <h2>h2 Back in my quaint <a href='#'>garden</a></h2>
-          <h3>h3 Jaunty <a href='#'>zinnias</a> vie with flaunting phlox</h3>
+          <h2>h2 Back in my quaint <a href='#foo'>garden</a></h2>
+          <h3>h3 Jaunty <a href='#foo'>zinnias</a> vie with flaunting phlox</h3>
           <h4>h4 Five or six big jet planes zoomed quickly by the new tower.</h4>
           <h5>h5 Expect skilled signwriters to use many jazzy, quaint old alphabets effectively.</h5>
           <h6>h6 Pack my box with five dozen liquor jugs.</h6>
         </hgroup>
       </section>
       <hr/>
-      <section>
+      <section id={`foo`}>
         <header>
           <nav>
             <ul>
-              <li><a href="#">Home</a></li>
-              <li><a href="#">About</a></li>
-              <li><a href="#">Contact</a></li>
+              <li><a href="#foo">Home</a></li>
+              <li><a href="#foo">About</a></li>
+              <li><a href="#foo">Contact</a></li>
             </ul>
           </nav>
         </header>
@@ -167,7 +167,7 @@ const KitchenSinkPage = ({ data, location }) => {
             <td>Nullam quis risus eget urna mollis ornare vel eu leo.</td>
           </tr>
           <tr>
-            <td><a href="#">Person Name</a></td>
+            <td><a href="#foo">Person Name</a></td>
             <td>1200</td>
             <td>Vestibulum id ligula porta felis euismod semper. Donec ullamcorper nulla non metus auctor
               fringilla.
@@ -263,7 +263,7 @@ const KitchenSinkPage = ({ data, location }) => {
       <hr/>
 
       <figure>
-        <img src="https://www.fillmurray.com/505/314"/>
+        <img alt={`fill murray`} src="https://www.fillmurray.com/505/314"/>
         <figcaption>Fig1. A picture of Bill Murray from <a href="https://www.fillmurray.com/">fillmurray.com</a>
         </figcaption>
       </figure>

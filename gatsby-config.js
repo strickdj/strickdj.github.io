@@ -1,5 +1,19 @@
 var site_title = `Daris Strickland`
 
+var purgecss = require('@fullhuman/postcss-purgecss')({
+
+  // Specify the paths to all of the template files in your project
+  content: [
+    './src/**/*.html',
+    './src/**/*.jsx',
+    './src/**/*.js',
+    // etc.
+  ],
+
+  // Include any special characters you're using in this regular expression
+  defaultExtractor: content => content.match(/[\w-/:]+(?<!:)/g) || []
+})
+
 module.exports = {
   siteMetadata: {
     title: site_title,
@@ -19,6 +33,9 @@ module.exports = {
         postCssPlugins: [
           require('postcss-import')(),
           require("tailwindcss")(),
+          ...process.env.NODE_ENV === 'production'
+            ? [purgecss]
+            : []
         ]
       }
     },

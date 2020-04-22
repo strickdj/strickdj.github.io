@@ -1,3 +1,4 @@
+/* purgecss start ignore */
 @import "_colors.css";
 
 @import "_tail-base.css";
@@ -7,6 +8,7 @@
 @import "_custom.css";
 
 @import "_tail-components.css";
+/* purgecss end ignore */
 
 @import "_tail-utilities.css";
 

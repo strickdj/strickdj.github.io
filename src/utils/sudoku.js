@@ -47,14 +47,17 @@ export function testBoard(i) {
 export function randomBoard() {
   const board = shuffle(seedBoards).pop()
   let i = shuffle([0,1,2,3,4]).pop()
+  // eslint-disable-next-line default-case
   switch(i) {
     case 4:
       board.reverse()
       break
     case 1:
       rotateBoard(board)
+    // eslint-disable-next-line no-fallthrough
     case 2:
       rotateBoard(board)
+    // eslint-disable-next-line no-fallthrough
     case 3:
       rotateBoard(board)
   }
