@@ -9,7 +9,7 @@ const Layout = ({ location, title, children }) => {
     <div className={`relative bg h-full`}>
       <h1 className={`z-0 absolute top-0 left-0 text-sideways p-5 text-6xl whitespace-no-wrap`}>{title}</h1>
 
-      <article>
+      <article className={`page-layout`}>
         <header className={`relative z-10`}>
           <div className={`container mx-auto bg-white-70 z-10 relative shadow-2xl`}>
             <Nav location={location}/>

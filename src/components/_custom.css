@@ -19,7 +19,7 @@ input::-webkit-inner-spin-button {
 }
 
 /* Main Layout Css */
-article {
+.page-layout {
     min-height: 100%;
     display: grid;
     grid-template-rows: auto 1fr auto;

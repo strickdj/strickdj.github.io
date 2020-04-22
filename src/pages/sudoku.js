@@ -20,6 +20,8 @@ const GameGrid = styled.div`
   height: 100vw;
   max-width: 60vh;
   max-height: 60vh;
+  min-height: 375px;
+  min-width: 375px;
   
   @media (min-width: 740px) {
     height: 80vw;
@@ -45,13 +47,6 @@ const Input = styled.input`
   outline: none;
   appearance: none;
   background: transparent;
-`
-
-const ActionPalette = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  margin: 2rem auto;
 `
 
 const CellSpan = styled.span`
@@ -125,33 +120,29 @@ const TestPage = ({ data, location }) => {
         <h1>Sudoku</h1>
       </div>
 
-      <ActionPalette>
-        <Button
-          variant="outlined"
-          color="primary"
+      <div className={`grid grid-flow-row md:grid-flow-col md:grid-cols-4 gap-4`}>
+        <button
+          className={`border rounded-none border-t-green p-1 bg-white-50 hover:bg-white-90 focus:bg-white-90`}
           onClick={handleCheckBoard}
-        >Check Board</Button>
+        >Check Board</button>
 
         {/* todo add an extra step to prevent accidental clicks */}
-        <Button
-          variant="outlined"
-          color="secondary"
+        <button
+          className={`border rounded-none border-comb p-1 bg-white-50 hover:bg-white-90 focus:bg-white-90`}
           onClick={handleGenerate}
-        >Generate New Puzzle</Button>
+        >Generate New Puzzle</button>
 
         {/* todo add an extra step to prevent accidental clicks */}
-        <Button
-          variant="outlined"
-          color="secondary"
+        <button
+          className={`border rounded-none border-comb p-1 bg-white-50 hover:bg-white-90 focus:bg-white-90`}
           onClick={handleReset}
-        >Reset Board</Button>
+        >Reset Board</button>
 
-        <Button
-          variant="outlined"
-          color="secondary"
+        <button
+          className={`border rounded-none border-comb p-1 bg-white-50 hover:bg-white-90 focus:bg-white-90`}
           onClick={handleSolve}
-        >Solve</Button>
-      </ActionPalette>
+        >Solve</button>
+      </div>
 
       <GameGrid>
         {range(1,10).map((i) => {
