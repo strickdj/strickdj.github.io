@@ -45,10 +45,6 @@ const Input = styled.input`
   outline: none;
   appearance: none;
   background: transparent;
-  ::-webkit-outer-spin-button { 
-    -webkit-appearance: none; 
-    margin: 0;
-  }
 `
 
 const ActionPalette = styled.div`

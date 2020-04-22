@@ -1,3 +1,7 @@
+html {
+    background: url("./den-340.webp") no-repeat center center fixed;
+    background-size: cover;
+}
 
 html, body, #___gatsby, #gatsby-focus-wrapper {
     width: 100%;
@@ -12,4 +16,31 @@ body {
 input::-webkit-inner-spin-button {
     -webkit-appearance: none;
     margin: 0;
+}
+
+/* Main Layout Css */
+article {
+    min-height: 100%;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    grid-template-columns: 100%;
+}
+
+blockquote {
+    background: var(--beige);
+    border-left: 10px solid var(--feather-3);
+    margin: 1.5em 10px;
+    padding: 0.5em 10px;
+    quotes: "\201C""\201D""\2018""\2019";
+}
+blockquote:before {
+    color: var(--feather-3);
+    content: open-quote;
+    font-size: 4em;
+    line-height: 0.1em;
+    margin-right: 0.25em;
+    vertical-align: -0.4em;
+}
+blockquote p {
+    display: inline;
 }

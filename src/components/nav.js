@@ -1,66 +1,60 @@
 import React from "react"
 import { Link } from "gatsby"
-import styled from "@emotion/styled"
-import isPropValid from "@emotion/is-prop-valid"
 
+import HomeIcon from '@material-ui/icons/Home'
+import CodeIcon from '@material-ui/icons/Code'
+import EmailIcon from '@material-ui/icons/Email'
 import LinkedInIcon from "@material-ui/icons/LinkedIn"
 
-const StyledLink = styled(Link, {
-  shouldForwardProp: prop => isPropValid(prop)
-})`
-  box-shadow: none;
-  font-style: ${props => props.isCurrent ? 'italic' : 'normal'};
-`
+const NavButton = (props) => {
+  const { isCurrent, text, icon: Icon, className, ...rest} = props
 
-const StyledA = styled("a")`
-  box-shadow: none;
-`
+  const classes = 'hover:z-10 focus:z-10 flex-1 flex flex-col items-center p-4 transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110'
 
-const Ul = styled.ul`
-  margin: 0;
-  padding: 0;
-  list-style-type: none;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  
-  li:first-child a {
-    padding-left: 0;
-  }
-  
-  @media (min-width: 960px) {
-    justify-content: flex-end;
-  }
-`
+  const classNames = [className, classes].join(' ')
+
+  return (
+    <Link {...rest} title={text} className={`${classNames}`}>
+      <span className="shadow-xs hover:shadow-2xl transition-shadow duration-500 flex items-center justify-center rounded-full p-2 bg-white">
+        <Icon />
+      </span>
+      <span>{text}</span>
+    </Link>
+  )
+}
 
 const Nav = ({ location }) => {
   const rootPath = `${__PATH_PREFIX__}/`
 
   return (
-    <nav>
-      <Ul>
-        <li>
-          <StyledLink title="Home" isCurrent={location.pathname === rootPath} to="/">home</StyledLink>
-        </li>
-        {/*<li>*/}
-        {/*  <StyledLink title="About Me" isCurrent={location.pathname === "/about"} to="/about">about me</StyledLink>*/}
-        {/*</li>*/}
-        <li>
-          <StyledLink title="Contact Me" isCurrent={location.pathname === "/contact"} to="/contact">contact me</StyledLink>
-        </li>
-        <li>
-          <StyledLink title="Sudoku" isCurrent={location.pathname === "/sudoku"} to="/sudoku">sudoku</StyledLink>
-        </li>
-        <li>
-          <StyledA target="_blank"
-                   rel="noopener noreferrer"
-                   href="https://www.linkedin.com/in/daris-strickland-868a9269"
-                   title="LinkedIn Profile">
-            <LinkedInIcon />
-          </StyledA>
-        </li>
-      </Ul>
-    </nav>
+    <div className="flex max-w-screen-xl bg-gray-200 text-2xl font-light">
+      <NavButton text={`home`}
+                 to="/"
+                 isCurrent={location.pathname === rootPath}
+                 icon={HomeIcon}
+                 className="bg-t-green"/>
+      <NavButton text={`portfolio`}
+                 to="/portfolio"
+                 isCurrent={location.pathname === "/portfolio"}
+                 icon={CodeIcon}
+                 className="bg-comb"/>
+      <NavButton text={`contact me`}
+                 to="/contact"
+                 isCurrent={location.pathname === "/contact"}
+                 icon={EmailIcon}
+                 className="bg-t-teal"/>
+
+      <a target="_blank"
+         className={`bg-t-purple hover:z-10 focus:z-10 flex-1 flex flex-col items-center p-4 transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110`}
+         rel="noopener noreferrer"
+         href="https://www.linkedin.com/in/daris-strickland-868a9269"
+         title="LinkedIn Profile">
+        <span className="shadow-xs hover:shadow-2xl transition-shadow duration-500 flex items-center justify-center rounded-full p-2 bg-white">
+          <LinkedInIcon />
+        </span>
+        <span>Linked In</span>
+      </a>
+    </div>
   )
 }
 
