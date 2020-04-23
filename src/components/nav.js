@@ -1,25 +1,23 @@
 import React, { useState } from "react"
 import { Link } from "gatsby"
 
-import HomeIcon from '@material-ui/icons/Home'
-import CodeIcon from '@material-ui/icons/Code'
-import EmailIcon from '@material-ui/icons/Email'
 import LinkedInIcon from "@material-ui/icons/LinkedIn"
 
 const NavButton = (props) => {
-  const { isCurrent, text, icon: Icon, className, ...rest} = props
+  const { isCurrent, className, href, children, ...rest} = props
 
-  const classes = 'flex-auto w-full sm:w-1/2 md:w-auto hover:z-10 focus:z-10 md:flex-1 flex flex-col items-center p-4 transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110'
+  const classes = 'sm:border-b-4 border-t-4 border-beige flex-auto w-full sm:w-1/2 md:w-auto hover:z-10 focus:z-10 md:flex-1 '
 
-  const classNames = [className, classes].join(' ')
+  const classNames = [className, classes, ...[isCurrent ? 'bg-comb' : 'bg-feather-dark']].join(' ')
+
+  const LinkEl = href ? 'a' : Link;
 
   return (
-    <Link {...rest} title={text} className={`${classNames}`}>
-      <span className="shadow-xs hover:shadow-2xl transition-shadow duration-500 flex items-center justify-center rounded-full p-2 bg-white">
-        <Icon />
-      </span>
-      <span>{text}</span>
-    </Link>
+    <LinkEl {...rest} href={href || null} className={`${classNames}`}>
+      <div className={`flex items-center justify-center p-4 w-full h-full transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110`}>
+        {children}
+      </div>
+    </LinkEl>
   )
 }
 
@@ -34,33 +32,37 @@ const Nav = ({ location }) => {
           menu
         </button>
       </div>
-      <div className={`${showMenu ? 'flex' : 'hidden'} sm:flex flex-wrap max-w-screen-xl bg-gray-200 text-2xl font-light`}>
-        <NavButton text={`home`}
+      <div className={`${showMenu ? 'flex' : 'hidden'} sm:flex flex-wrap max-w-screen-xl bg-gray-200 text-2xl font-light text-beige`}>
+        <NavButton title={`home`}
                    to="/"
                    isCurrent={location.pathname === rootPath}
-                   icon={HomeIcon}
-                   className="bg-t-green"/>
-        <NavButton text={`portfolio`}
+                   >
+          <span>home</span>
+        </NavButton>
+
+        <NavButton title={`portfolio`}
                    to="/portfolio"
                    isCurrent={location.pathname === "/portfolio"}
-                   icon={CodeIcon}
-                   className="bg-comb"/>
-        <NavButton text={`contact me`}
+                   >
+          <span>my work</span>
+        </NavButton>
+
+        <NavButton title={`contact me`}
                    to="/contact"
                    isCurrent={location.pathname === "/contact"}
-                   icon={EmailIcon}
-                   className="bg-t-teal"/>
+                   >
+          <span>contact me</span>
+        </NavButton>
 
-        <a target="_blank"
-           className={`bg-t-purple flex-auto w-full sm:w-1/2 md:w-auto hover:z-10 focus:z-10 md:flex-1 flex flex-col items-center p-4 transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110`}
-           rel="noopener noreferrer"
-           href="https://www.linkedin.com/in/daris-strickland-868a9269"
-           title="LinkedIn Profile">
-        <span className="shadow-xs hover:shadow-2xl transition-shadow duration-500 flex items-center justify-center rounded-full p-2 bg-white">
-          <LinkedInIcon />
-        </span>
-          <span>linkedin</span>
-        </a>
+        <NavButton title={`linkedin`}
+                   href="https://www.linkedin.com/in/daris-strickland-868a9269"
+                   target="_blank"
+                   rel="noopener noreferrer"
+                   isCurrent={false}
+                   >
+          <span>linked</span> <LinkedInIcon/>
+        </NavButton>
+
       </div>
     </div>
   )

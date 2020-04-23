@@ -2,9 +2,6 @@ import React from "react"
 import { useStaticQuery, graphql } from "gatsby"
 import Image from "gatsby-image"
 
-import LinkedInIcon from "@material-ui/icons/LinkedIn"
-
-
 const Bio = () => {
   const data = useStaticQuery(graphql`
     query BioQuery {
@@ -42,8 +39,7 @@ const Bio = () => {
         }}
       />
       <p>
-        Written by <strong>{author.name}</strong> {author.summary} <br />
-        <span>LinkedIn: <a href="https://www.linkedin.com/in/daris-strickland-868a9269" target="_blank" rel="noopener noreferrer" title="LinkedIn Profile"><LinkedInIcon /></a></span>
+        written by <strong>{author.name}</strong> {author.summary}
       </p>
     </div>
   )

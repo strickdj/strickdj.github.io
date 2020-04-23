@@ -361,7 +361,7 @@ const KitchenSinkPage = ({ data, location }) => {
             <legend>I am legend</legend>
             <div>
               <label>
-                <input type="radio" name="options-radios" id="optionsR-radios1" value="option1" checked/> Option
+                <input type="radio" name="options-radios" id="optionsR-radios1" value="option1" defaultChecked={true}/> Option
                 one is this and that&mdash;be sure to include why it's great
               </label>
             </div>

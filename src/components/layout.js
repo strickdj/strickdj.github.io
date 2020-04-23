@@ -7,7 +7,7 @@ const Layout = ({ location, title, children }) => {
 
   return (
     <div className={`relative bg h-full`}>
-      <h1 className={`z-0 absolute top-0 left-0 text-sideways p-5 text-6xl whitespace-no-wrap`}>{title}</h1>
+      <h1 className={`text-feather-black z-0 opacity-50 absolute top-0 left-0 text-sideways p-5 text-6xl whitespace-no-wrap`}>{title}</h1>
 
       <article className="page-layout">
         <header className={`relative z-10`}>
