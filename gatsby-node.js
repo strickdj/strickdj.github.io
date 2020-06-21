@@ -62,3 +62,24 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
     })
   }
 }
+
+// This makes developing on local dev server with ie 11 possible...
+// Taken from: https://github.com/gatsbyjs/gatsby/issues/14502
+exports.onCreateWebpackConfig = function onCreateWebpackConfig({
+  actions,
+  stage,
+  loaders,
+}) {
+  if (stage === "develop") {
+    actions.setWebpackConfig({
+      module: {
+        rules: [
+          {
+            test: /react-hot-loader/,
+            use: [loaders.js()],
+          },
+        ],
+      },
+    })
+  }
+}

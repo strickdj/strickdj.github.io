@@ -14,7 +14,7 @@ const PortfolioPage = ({ data, location }) => {
 
       <ul>
         <li>
-          <Link to={`sudoku`}>
+          <Link to={`/sudoku`}>
             Sudoku
           </Link>
         </li>
