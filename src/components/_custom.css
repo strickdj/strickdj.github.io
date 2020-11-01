@@ -1,6 +1,4 @@
 html {
-    background: url("./den-340.webp") no-repeat center center fixed;
-    background-size: cover;
 }
 
 html, body, #___gatsby, #gatsby-focus-wrapper {
@@ -13,17 +11,13 @@ body {
     font-size: calc(16px + (22 - 16) * ((100vw - 300px) / (1600 - 300)));
 }
 
-input::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
-}
-
 /* Main Layout Css */
 .page-layout {
     min-height: 100%;
     display: grid;
-    grid-template-rows: auto 1fr auto;
-    grid-template-columns: 100%;
+    column-gap: 0;
+    grid-template-columns: 20px 16rem auto;
+    grid-template-rows: 25% auto;
 }
 
 blockquote {
@@ -44,3 +38,4 @@ blockquote:before {
 blockquote p {
     display: inline;
 }
+

@@ -1,5 +1,5 @@
 /* purgecss start ignore */
-@import "_colors.css";
+/* @import "_colors.css"; */
 
 @import "_tail-base.css";
 
@@ -12,4 +12,4 @@
 
 @import "_tail-utilities.css";
 
-@import "_custom-utilities.css";
+/* @import "_custom-utilities.css"; */

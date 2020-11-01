@@ -10,7 +10,7 @@ exports.createPages = async ({ graphql, actions }) => {
       {
         allMarkdownRemark(
           sort: { fields: [frontmatter___date], order: DESC }
-          limit: 1000
+          limit: 10
         ) {
           edges {
             node {
@@ -59,27 +59,6 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
       name: `slug`,
       node,
       value,
-    })
-  }
-}
-
-// This makes developing on local dev server with ie 11 possible...
-// Taken from: https://github.com/gatsbyjs/gatsby/issues/14502
-exports.onCreateWebpackConfig = function onCreateWebpackConfig({
-  actions,
-  stage,
-  loaders,
-}) {
-  if (stage === "develop") {
-    actions.setWebpackConfig({
-      module: {
-        rules: [
-          {
-            test: /react-hot-loader/,
-            use: [loaders.js()],
-          },
-        ],
-      },
     })
   }
 }

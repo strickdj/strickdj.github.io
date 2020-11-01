@@ -1,17 +1,16 @@
 var site_title = `Daris Strickland`
 
-var purgecss = require('@fullhuman/postcss-purgecss')({
-
+var purgecss = require("@fullhuman/postcss-purgecss")({
   // Specify the paths to all of the template files in your project
   content: [
-    './src/**/*.html',
-    './src/**/*.jsx',
-    './src/**/*.js',
+    "./src/**/*.html",
+    "./src/**/*.jsx",
+    "./src/**/*.js",
     // etc.
   ],
 
   // Include any special characters you're using in this regular expression
-  defaultExtractor: content => content.match(/[\w-/:]+(?<!:)/g) || []
+  defaultExtractor: content => content.match(/[\w-/:]+(?<!:)/g) || [],
 })
 
 module.exports = {
@@ -23,23 +22,19 @@ module.exports = {
     },
     description: ``, // todo: write a blog description
     siteUrl: `https://darisstrickland.com/`,
-    social: {
-    },
+    social: {},
   },
   plugins: [
     {
       resolve: `gatsby-plugin-postcss`,
       options: {
         postCssPlugins: [
-          require('postcss-import')(),
+          require("postcss-import")(),
           require("tailwindcss")(),
-          ...process.env.NODE_ENV === 'production'
-            ? [purgecss]
-            : []
-        ]
-      }
+          ...(process.env.NODE_ENV === "production" ? [purgecss] : []),
+        ],
+      },
     },
-    `gatsby-plugin-emotion`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -78,13 +73,7 @@ module.exports = {
     },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
-    {
-      resolve: `gatsby-plugin-google-analytics`,
-      options: {
-        trackingId: `UA-67812846-1`,
-      },
-    },
-    `gatsby-plugin-feed`,
+    // `gatsby-plugin-feed`,
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
@@ -98,6 +87,15 @@ module.exports = {
       },
     },
     `gatsby-plugin-react-helmet`,
+    {
+      resolve: "gatsby-plugin-module-resolver",
+      options: {
+        root: "./src", // <- will be used as a root dir — alias paths below will be relative to this
+        aliases: {
+          "@elements": "./components/Elements", // <- will become ./src/components
+        },
+      },
+    },
 
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
