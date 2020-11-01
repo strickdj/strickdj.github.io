@@ -44,13 +44,13 @@ export default () => {
           <div
             className={`fixed h-full flex flex-col justify-center items-start`}
           >
-            <ul className="">
-              {menu.map(m => {
+            <ul className="w-full flex flex-col justify-evenly items-stretch mb-5">
+              {menu.map((m, i) => {
                 return (
-                  <li>
+                  <li className="transition duration-500 ease-in-out hover:bg-black-30 transform hover:-translate-y-1 hover:scale-110">
                     <a
                       href={m.link || "#"}
-                      className="block p-4 text-white text-sm"
+                      className={`block py-4 text-white text-sm`}
                     >
                       {m.label}
                     </a>
@@ -76,7 +76,7 @@ export default () => {
               }}
             />
             <h2 className={`text-white mb-4`}>Daris Strickland</h2>
-            <p className={`text-white text-xs mb-8`}>for hire</p>
+            <p className={`text-white text-xs mb-8`}>at you're service</p>
           </div>
         </div>
       </div>
@@ -88,7 +88,7 @@ export default () => {
           />
           <div className="z-10 relative w-full h-full flex flex-col justify-center items-center bg-black-70">
             <h1 className={`text-comb text-center`}>Daris Strickland</h1>
-            <p className="text-white">web dev guy</p>
+            <p className="text-white">web dev.</p>
           </div>
         </div>
         <div className="bg-white p-16">
@@ -119,8 +119,8 @@ export default () => {
           </div>
         </div>
         <div className="bg-gray-100 p-16">
-          <h2 className="text-black text-5xl font-bold mb-3">Services</h2>
-          <p className="text-sm mb-10">services i offer.</p>
+          <h2 className="text-black text-5xl font-bold mb-3">Technologies</h2>
+          <p className="text-sm mb-10">tech focus.</p>
           <div className="grid grid-flow-col grid-cols-3 grid-rows-2 gap-4">
             {Array.from({ length: 6 }).map(_ => {
               return (

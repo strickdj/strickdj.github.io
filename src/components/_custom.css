@@ -16,7 +16,7 @@ body {
     min-height: 100%;
     display: grid;
     column-gap: 0;
-    grid-template-columns: 20px 16rem auto;
+    grid-template-columns: 17px 16rem auto;
     grid-template-rows: 25% auto;
 }
 
