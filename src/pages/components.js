@@ -84,6 +84,7 @@ export default function Components() {
         <div className={`relative h-screen`}>
           <img
             className="absolute w-full h-full inset-0 z-0 opacity-75"
+            alt="foo bar"
             src="http://lorempixel.com/1445/680/"
           />
           <div className="z-10 relative w-full h-full flex flex-col justify-center items-center bg-black-70">
@@ -95,7 +96,11 @@ export default function Components() {
           <h2 className="text-black text-5xl font-bold mb-3">About</h2>
           <p className="text-sm mb-10">learn about me.</p>
           <div className="flex flex-row">
-            <img className="pr-10" src="http://lorempixel.com/430/535/" />
+            <img
+              className="pr-10"
+              alt="foo bar"
+              src="http://lorempixel.com/430/535/"
+            />
             <div className="w-full p-10">
               <h3 className="text-red-700 mb-3">Who am i?</h3>
               <h2 className="mb-3 font-bold">I think therefore I am.</h2>

@@ -20,6 +20,11 @@ body {
     grid-template-rows: 25% auto;
 }
 
+.awesome-css {
+    overflow-wrap: normal;
+    @apply text-5xl border-4 border-gray-200 p-3 w-40;
+}
+
 blockquote {
     background: var(--beige);
     border-left: 10px solid var(--feather-3);

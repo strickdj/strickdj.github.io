@@ -1,101 +1,37 @@
 import React from "react"
-import { useStaticQuery, graphql } from "gatsby"
-import Image from "gatsby-image/withIEPolyfill"
 import ContactForm from "../components/contact-form"
+import SideMenu from "../components/SideMenu"
 
 export default () => {
-  const data = useStaticQuery(graphql`
-    query BlaQuery {
-      avatar: file(absolutePath: { regex: "/profile-pic.jpg/" }) {
-        childImageSharp {
-          fixed(width: 110, height: 110) {
-            ...GatsbyImageSharpFixed
-          }
-        }
-      }
-      site {
-        siteMetadata {
-          author {
-            name
-            summary
-          }
-        }
-      }
-    }
-  `)
-
-  const menu = [
-    { label: "Home", link: null },
-    { label: "About", link: null },
-    { label: "Services", link: null },
-    { label: "Portfolio", link: null },
-    { label: "Clients", link: null },
-    { label: "Blog", link: null },
-    { label: "Contact", link: null },
-  ]
-
-  const { author } = data.site.siteMetadata
   return (
     <div className={`page-layout`}>
-      <div
-        className={` col-start-2 col-end-2 row-span-3 relative w-64 h-full overflow-hidden`}
-      >
-        <div className="overflow-y-hidden w-full h-full p-8 bg-black-90">
-          <div
-            className={`fixed h-full flex flex-col justify-center items-start`}
-          >
-            <ul className="w-full flex flex-col justify-evenly items-stretch mb-5">
-              {menu.map((m, i) => {
-                return (
-                  <li className="transition duration-500 ease-in-out hover:bg-black-30 transform hover:-translate-y-1 hover:scale-110">
-                    <a
-                      href={m.link || "#"}
-                      className={`block py-4 text-white text-sm`}
-                    >
-                      {m.label}
-                    </a>
-                  </li>
-                )
-              })}
-            </ul>
+      <SideMenu />
 
-            <Image
-              fixed={data.avatar.childImageSharp.fixed}
-              alt={author.name}
-              style={{
-                marginBottom: 0,
-                minWidth: 110,
-                minHeight: 110,
-                borderRadius: `100%`,
-              }}
-              imgStyle={{
-                minWidth: 110,
-                minHeight: 110,
-                borderRadius: `50%`,
-                border: `5px solid var(--feather-3)`,
-              }}
-            />
-            <h2 className={`text-white mb-4`}>Daris Strickland</h2>
-            <p className={`text-white text-xs mb-8`}>at you're service</p>
-          </div>
-        </div>
-      </div>
       <div className="main-content">
         <div className={`relative h-screen`}>
           <img
             className="absolute w-full h-full inset-0 z-0 opacity-75"
+            alt="foo bar"
             src="http://lorempixel.com/1445/680/"
           />
           <div className="z-10 relative w-full h-full flex flex-col justify-center items-center bg-black-70">
-            <h1 className={`text-comb text-center`}>Daris Strickland</h1>
-            <p className="text-white">web dev.</p>
+            <div>
+              <h1 className={`text-red-600 awesome-css`}>Daris Strickland</h1>
+              <p className="text-white px-3 border-l-4 border-transparent">
+                yore web dev.
+              </p>
+            </div>
           </div>
         </div>
         <div className="bg-white p-16">
           <h2 className="text-black text-5xl font-bold mb-3">About</h2>
           <p className="text-sm mb-10">learn about me.</p>
           <div className="flex flex-row">
-            <img className="pr-10" src="http://lorempixel.com/430/535/" />
+            <img
+              className="pr-10"
+              src="http://lorempixel.com/430/535/"
+              alt="foo bar"
+            />
             <div className="w-full p-10">
               <h3 className="text-red-700 mb-3">Who am i?</h3>
               <h2 className="mb-3 font-bold">I think therefore I am.</h2>
@@ -122,9 +58,11 @@ export default () => {
           <h2 className="text-black text-5xl font-bold mb-3">Technologies</h2>
           <p className="text-sm mb-10">tech focus.</p>
           <div className="grid grid-flow-col grid-cols-3 grid-rows-2 gap-4">
-            {Array.from({ length: 6 }).map(_ => {
+            {Array.from({ length: 6 }).map((_, i) => {
               return (
-                <div className="bg-white p-3 border border-gray-400">a</div>
+                <div key={i} className="bg-white p-3 border border-gray-400">
+                  a
+                </div>
               )
             })}
           </div>
@@ -147,9 +85,11 @@ export default () => {
           <h2 className="text-black text-5xl font-bold mb-3">Portfolio</h2>
           <p className="text-sm mb-10">showcasing some of my best work.</p>
           <div className="grid grid-flow-col grid-cols-3 grid-rows-2 gap-4">
-            {Array.from({ length: 6 }).map(_ => {
+            {Array.from({ length: 6 }).map((_, i) => {
               return (
-                <div className="bg-white p-3 border border-gray-400">a</div>
+                <div key={i} className="bg-white p-3 border border-gray-400">
+                  a
+                </div>
               )
             })}
           </div>
@@ -158,9 +98,11 @@ export default () => {
           <h2 className="text-black text-5xl font-bold mb-3">Clients</h2>
           <p className="text-sm mb-10">what others think.</p>
           <div className="grid grid-flow-row grid-cols-3 grid-rows-2 gap-4">
-            {Array.from({ length: 3 }).map(_ => {
+            {Array.from({ length: 3 }).map((_, i) => {
               return (
-                <div className="bg-white p-3 border border-gray-400">a</div>
+                <div key={i} className="bg-white p-3 border border-gray-400">
+                  a
+                </div>
               )
             })}
           </div>
@@ -175,14 +117,14 @@ export default () => {
 
           <ContactForm />
         </div>
-        <footer className="bg-black-90 border-l border-gray-700 py-10">
+        <footer className="bg-black-90 border-l border-gray-700 px-20 py-10">
           <div className="flex flex-row justify-around">
             <p className="text-gray-100">a</p>
             <p className="text-gray-100">a</p>
             <p className="text-gray-100">a</p>
           </div>
-          <hr className="border-gray-700 my-5 mx-10" />
-          <p className="text-gray-200 text-center text-sm mb-10">
+          <hr className="border-gray-700 my-5" />
+          <p className="text-gray-200 text-right text-sm ">
             &copy; Daris Strickland
           </p>
         </footer>
