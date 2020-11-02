@@ -1,19 +1,43 @@
 import React from "react"
 import ContactForm from "../components/contact-form"
 import SideMenu from "../components/SideMenu"
+import { useStaticQuery, graphql } from "gatsby"
+import Image from "gatsby-image"
 
 export default () => {
+  const data = useStaticQuery(graphql`
+    query {
+      insidePassage: file(absolutePath: { regex: "/inside-passage.webp/" }) {
+        childImageSharp {
+          fluid(maxWidth: 1440) {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      }
+    }
+  `)
+
   return (
     <div className={`page-layout`}>
       <SideMenu />
 
       <div className="main-content">
         <div className={`relative h-screen`}>
-          <img
+          {/* <img
             className="absolute w-full h-full inset-0 z-0 opacity-75"
             alt="foo bar"
             src="http://lorempixel.com/1445/680/"
-          />
+          /> */}
+          <div className="absolute w-full h-full inset-0 z-0 opacity-75">
+            <Image
+              fluid={data.insidePassage.childImageSharp.fluid}
+              alt="somewhere in the inside passage."
+              style={{
+                marginBottom: 0,
+                maxHeight: "100%",
+              }}
+            />
+          </div>
           <div className="z-10 relative w-full h-full flex flex-col justify-center items-center bg-black-70">
             <div>
               <h1 className={`text-red-600 awesome-css`}>Daris Strickland</h1>

@@ -1,6 +1,6 @@
 import React from "react"
 import { useStaticQuery, graphql } from "gatsby"
-import Image from "gatsby-image/withIEPolyfill"
+import Image from "gatsby-image"
 
 const menu = [
   { label: "Home", link: null },
@@ -64,13 +64,10 @@ export default function SideMenu() {
                 marginBottom: 0,
                 minWidth: 110,
                 minHeight: 110,
-                // borderRadius: `100%`,
               }}
               imgStyle={{
                 minWidth: 110,
                 minHeight: 110,
-                // borderRadius: `50%`,
-                border: `5px solid var(--feather-3)`,
               }}
             />
           </div>
