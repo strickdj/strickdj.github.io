@@ -10,7 +10,7 @@ var purgecss = require("@fullhuman/postcss-purgecss")({
   ],
 
   // Include any special characters you're using in this regular expression
-  defaultExtractor: content => content.match(/[\w-/:]+(?<!:)/g) || [],
+  defaultExtractor: (content) => content.match(/[\w-/:]+(?<!:)/g) || [],
 })
 
 module.exports = {
@@ -29,7 +29,16 @@ module.exports = {
       resolve: `gatsby-plugin-postcss`,
       options: {
         postCssPlugins: [
-          require("postcss-import")(),
+          // require("postcss-import")(),
+          require("tailwindcss")(),
+          ...(process.env.NODE_ENV === "production" ? [purgecss] : []),
+        ],
+      },
+    },
+    {
+      resolve: `gatsby-plugin-sass`,
+      options: {
+        postCssPlugins: [
           require("tailwindcss")(),
           ...(process.env.NODE_ENV === "production" ? [purgecss] : []),
         ],

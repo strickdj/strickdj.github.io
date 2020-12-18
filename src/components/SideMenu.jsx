@@ -35,9 +35,9 @@ export default function SideMenu() {
 
   const { author } = data.site.siteMetadata
   return (
-    <div className={`col-start-2 col-end-2 row-span-3 relative`}>
-      <div className="fixed w-64 inset-y-0 overflow-y-scroll bg-black-90">
-        <div className={`h-full flex flex-col items-start`}>
+    <div className="sidebar hidden xl:block col-start-1 col-end-1 row-span-3 relative">
+      <div className="fixed w-64 inset-y-0 overflow-y-scroll bg-black-90 scroll-hidden">
+        <div className="sidebar__inner h-full flex flex-col items-start">
           <ul className="w-full flex flex-col items-stretch mb-5">
             {menu.map((m, i) => {
               return (
@@ -56,7 +56,7 @@ export default function SideMenu() {
             })}
           </ul>
 
-          <div className="flex bg-white w-full pl-8 mb-5">
+          <div className="flex bg-white w-full pl-8 mb-5 border-r-2 border-black">
             <Image
               fixed={data.avatar.childImageSharp.fixed}
               alt={author.name}

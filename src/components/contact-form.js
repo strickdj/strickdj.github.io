@@ -1,16 +1,18 @@
 import React from "react"
-import Button from "@material-ui/core/Button"
-import TextField from "@material-ui/core/TextField"
 
 function ContactForm() {
-
   return (
-    <form name="contact" autoComplete="off" method="post" data-netlify="true" data-netlify-honeypot="phone">
-
+    <form
+      name="contact"
+      autoComplete="off"
+      method="post"
+      data-netlify="true"
+      data-netlify-honeypot="phone"
+    >
       <input type="hidden" name="form-name" value="contact" />
-      <input type="hidden" name="phone" placeholder="(555) 555-5555" value=""/>
+      <input type="hidden" name="phone" placeholder="(555) 555-5555" value="" />
 
-      <TextField
+      {/* <TextField
         margin="normal"
         fullWidth
         required
@@ -65,11 +67,9 @@ function ContactForm() {
 
       <Button variant="contained" type="submit">
         Contact
-      </Button>
-
+      </Button> */}
     </form>
   )
-
 }
 
 export default ContactForm

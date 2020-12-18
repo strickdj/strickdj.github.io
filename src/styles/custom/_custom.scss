@@ -1,4 +1,9 @@
-html {
+html,
+body {
+  height: auto;
+  width: 100vw;
+  overflow-x: hidden;
+  overflow-y: visible;
 }
 
 html, body, #___gatsby, #gatsby-focus-wrapper {
@@ -6,17 +11,24 @@ html, body, #___gatsby, #gatsby-focus-wrapper {
     height: 100%;
 }
 
-/*font-size: calc([minimum size] + ([maximum size] - [minimum size]) * ((100vw - [minimum viewport width]) / ([maximum viewport width] - [minimum viewport width])));*/
-body {
-    font-size: calc(16px + (22 - 16) * ((100vw - 300px) / (1600 - 300)));
+img {
+    max-width: 100%;
 }
 
-/* Main Layout Css */
+.darken {
+    filter: brightness(60%);
+}
+
+
+// 
+// Main Layout Styles
+//______________________________
+
 .page-layout {
     min-height: 100%;
     display: grid;
     column-gap: 0;
-    grid-template-columns: 17px 16rem auto;
+    grid-template-columns: 16rem auto;
     grid-template-rows: 25% auto;
 }
 
@@ -26,21 +38,32 @@ body {
 }
 
 blockquote {
-    background: var(--beige);
-    border-left: 10px solid var(--feather-3);
+    background: #000000;
+    border-left: 10px solid #ffffff;
     margin: 1.5em 10px;
     padding: 0.5em 10px;
     quotes: "\201C""\201D""\2018""\2019";
 }
+
 blockquote:before {
-    color: var(--feather-3);
+    color: #ffffff;
     content: open-quote;
     font-size: 4em;
     line-height: 0.1em;
     margin-right: 0.25em;
     vertical-align: -0.4em;
 }
+
 blockquote p {
     display: inline;
 }
 
+// 
+// Sidebar Styles
+//______________________________
+
+@media screen and ( min-height: 620px ) {
+    .sidebar__inner {
+        justify-content: center;        
+    }
+}

@@ -1,0 +1,13 @@
+/* purgecss start ignore */
+@tailwind base;
+@tailwind components;
+/* purgecss end ignore */
+
+@tailwind utilities;
+
+.scroll-hidden {
+    scrollbar-width: none; 
+}
+.scroll-hidden::-webkit-scrollbar {
+    display: none;
+}
