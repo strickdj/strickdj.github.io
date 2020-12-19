@@ -28,8 +28,13 @@ img {
     min-height: 100%;
     display: grid;
     column-gap: 0;
-    grid-template-columns: 16rem auto;
-    grid-template-rows: 25% auto;
+    grid-template-columns: 100%;
+    grid-template-rows: 100%;
+
+    @screen xl {
+        grid-template-columns: 16rem auto;
+        grid-template-rows: 100%;
+    }
 }
 
 .awesome-css {

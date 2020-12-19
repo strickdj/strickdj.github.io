@@ -1,5 +1,4 @@
 import React from "react"
-// import ContactForm from "../components/contact-form"
 import SideMenu from "../components/SideMenu"
 import { useStaticQuery, graphql } from "gatsby"
 import Image from "gatsby-image"
@@ -17,11 +16,44 @@ export default () => {
     }
   `)
 
-  return (
-    <div className={`page-layout`}>
-      <SideMenu />
+  const [menuOpen, setMenuOpen] = React.useState(true)
 
-      <div className="main-content col-span-2 xl:col-span-1">
+  return (
+    <div className="page-layout w-full">
+      <div
+        className={`absolute col-span-2 flex flex-row items-center justify-end z-30 xl:hidden ${
+          menuOpen ? "left-64" : ""
+        }`}
+      >
+        <button
+          className="bg-black-90 inline-block text-white p-2 ring-2 ring-transparent focus:outline-none border-none"
+          onClick={() => {
+            console.log("clicked")
+            setMenuOpen(!menuOpen)
+          }}
+        >
+          <svg
+            width="28"
+            height="28"
+            stroke="currentColor"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            preserveAspectRatio="xMidYMid meet"
+          >
+            <path
+              xmlns="http://www.w3.org/2000/svg"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2"
+              d="M4 6h16M4 12h16M4 18h16"
+            ></path>
+          </svg>
+        </button>
+      </div>
+
+      <SideMenu isOpen={menuOpen} />
+
+      <div className="main-content col-span-full xl:col-start-2 xl:col-span-2">
         {/* -------------------------- Hero -------------------------- */}
         <div className={`relative h-64 xl:h-screen`}>
           {/* <img
@@ -29,7 +61,7 @@ export default () => {
             alt="foo bar"
             src="http://lorempixel.com/1445/680/"
           /> */}
-          <div className="img-darken absolute w-full h-full inset-0 z-0 darken">
+          <div className="absolute w-full h-full inset-0 z-0 darken">
             <Image
               fluid={data.insidePassage.childImageSharp.fluid}
               alt="somewhere in the inside passage."

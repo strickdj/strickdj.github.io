@@ -99,9 +99,10 @@ module.exports = {
     {
       resolve: "gatsby-plugin-module-resolver",
       options: {
-        root: "./src", // <- will be used as a root dir — alias paths below will be relative to this
+        root: "./src",
         aliases: {
-          "@elements": "./components/Elements", // <- will become ./src/components
+          "@elements": "./components/Elements",
+          "@hooks": "./hooks",
         },
       },
     },

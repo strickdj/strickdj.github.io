@@ -1,6 +1,7 @@
 import React from "react"
 import { useStaticQuery, graphql } from "gatsby"
 import Image from "gatsby-image"
+import { motion } from "framer-motion"
 
 const menu = [
   { label: "Home", link: null },
@@ -12,7 +13,7 @@ const menu = [
   { label: "Contact", link: null },
 ]
 
-export default function SideMenu() {
+export default function SideMenu({ isOpen }) {
   const data = useStaticQuery(graphql`
     query BlaQuery {
       avatar: file(absolutePath: { regex: "/profile-pic.jpg/" }) {
@@ -35,8 +36,19 @@ export default function SideMenu() {
 
   const { author } = data.site.siteMetadata
   return (
-    <div className="sidebar hidden xl:block col-start-1 col-end-1 row-span-3 relative">
-      <div className="fixed w-64 inset-y-0 overflow-y-scroll bg-black-90 scroll-hidden">
+    <div
+      className={`sidebar absolute top-0 left-0 z-20 xl:block col-start-1 col-end-1 row-span-full xl:relative ${
+        isOpen ? "" : ""
+      }`}
+    >
+      <motion.div
+        key="MobileNavigation"
+        initial={{ x: `-100%`, opacity: 0 }}
+        animate={{ x: isOpen ? "0%" : `-100%`, opacity: isOpen ? 1 : 0 }}
+        exit={{ x: `-100%`, opacity: 0 }}
+        transition={{ ease: "easeInOut" }}
+        className="fixed w-64 inset-y-0 overflow-y-scroll bg-black-90 scroll-hidden pt-12"
+      >
         <div className="sidebar__inner h-full flex flex-col items-start">
           <ul className="w-full flex flex-col items-stretch mb-5">
             {menu.map((m, i) => {
@@ -76,7 +88,7 @@ export default function SideMenu() {
             <h2 className={`text-white mb-4`}>Daris Strickland</h2>
           </div>
         </div>
-      </div>
+      </motion.div>
     </div>
   )
 }
