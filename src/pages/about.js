@@ -119,34 +119,21 @@ export default () => {
           </div>
         </div>
         {/* -------------------------- Technologies -------------------------- */}
-        <div id="technologies" className="bg-gray-100 p-16">
+        <div className="bg-gray-100 p-16">
           <h2 className="text-black text-5xl font-bold mb-3">Technologies</h2>
           <p className="text-sm mb-10">tech focus.</p>
           <div className="grid grid-flow-col grid-cols-3 grid-rows-2 gap-4">
-            <div className="bg-white p-3 border border-gray-400">
-              <p>Javascript</p>
-              <p>React</p>
-              <p>Graphql</p>
-              <p>CSS</p>
-            </div>
-            <div className="bg-white p-3 border border-gray-400">
-              <p>PHP</p>
-              <p>Laravel</p>
-              <p>Node</p>
-              <p>Gatsby</p>
-            </div>
-            <div className="bg-white p-3 border border-gray-400">
-              <p>Mysql</p>
-              <p>MariaDb</p>
-              <p>WordPress</p>
-            </div>
+            {Array.from({ length: 6 }).map((_, i) => {
+              return (
+                <div key={i} className="bg-white p-3 border border-gray-400">
+                  a
+                </div>
+              )
+            })}
           </div>
         </div>
         {/* -------------------------- Call To Action -------------------------- */}
-        <div
-          id="cta"
-          className="bg-black-90 xl:border-l xl:border-gray-700 px-5 py-10 xl:p-16 flex flex-col md:flex-row md:items-center justify-between"
-        >
+        <div className="bg-black-90 xl:border-l xl:border-gray-700 px-5 py-10 xl:p-16 flex flex-col md:flex-row md:items-center justify-between">
           <div className="pb-10 lg:pb-0 md:w-2/3">
             <h2 className="text-white text-5xl font-bold mb-10">
               Let's Work Together!
@@ -163,7 +150,7 @@ export default () => {
           </div>
         </div>
         {/* -------------------------- Portfolio -------------------------- */}
-        <div id="portfolio" className="p-16">
+        <div className="p-16">
           <h2 className="text-black text-5xl font-bold mb-3">Portfolio</h2>
           <p className="text-sm mb-10">showcasing some of my best work.</p>
           <div className="grid grid-flow-col grid-cols-3 grid-rows-2 gap-4">
@@ -177,7 +164,7 @@ export default () => {
           </div>
         </div>
         {/* -------------------------- Clients -------------------------- */}
-        <div id="clients" className="bg-gray-100 p-16">
+        <div className="bg-gray-100 p-16">
           <h2 className="text-black text-5xl font-bold mb-3">Clients</h2>
           <p className="text-sm mb-10">what others think.</p>
           <div className="grid grid-flow-row grid-cols-3 grid-rows-2 gap-4">
@@ -191,22 +178,19 @@ export default () => {
           </div>
         </div>
         {/* -------------------------- Blog -------------------------- */}
-        <div id="blog" className="p-16">
+        <div className="p-16">
           <h2 className="text-black text-5xl font-bold mb-3">Blog</h2>
           <p className="text-sm mb-10">check out my latest blog posts.</p>
         </div>
         {/* -------------------------- Contact -------------------------- */}
-        <div id="contact" className="bg-gray-100 p-16">
+        <div className="bg-gray-100 p-16">
           <h2 className="text-black text-5xl font-bold mb-3">Contact Me</h2>
           <p className="text-sm mb-10">let's get in touch.</p>
 
           {/* <ContactForm /> */}
         </div>
         {/* -------------------------- Footer -------------------------- */}
-        <footer
-          id="footer"
-          className="bg-black-90 border-l border-gray-700 px-20 pt-10 pb-8"
-        >
+        <footer className="bg-black-90 border-l border-gray-700 px-20 pt-10 pb-8">
           <div className="flex flex-row justify-around">
             <p className="text-gray-100">a</p>
             <p className="text-gray-100">a</p>

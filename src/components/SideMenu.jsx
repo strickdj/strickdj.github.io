@@ -2,15 +2,17 @@ import React from "react"
 import { useStaticQuery, graphql } from "gatsby"
 import Image from "gatsby-image"
 import { motion } from "framer-motion"
+import { navigate } from "gatsby"
+import { getCoords, scrollToY } from "@utils"
 
 const menu = [
-  { label: "Home", link: null },
-  { label: "About", link: null },
-  { label: "Services", link: null },
-  { label: "Portfolio", link: null },
-  { label: "Clients", link: null },
-  { label: "Blog", link: null },
-  { label: "Contact", link: null },
+  { label: "Home", link: "#", scrollTo: "#home" },
+  { label: "About", link: "#", scrollTo: "#about" },
+  { label: "Tech", link: "#", scrollTo: "#technologies" },
+  { label: "Portfolio", link: "#", scrollTo: "#portfolio" },
+  { label: "Clients", link: "#", scrollTo: "#clients" },
+  { label: "Blog", link: "#", scrollTo: "#blog" },
+  { label: "Contact", link: "#", scrollTo: "#contact" },
 ]
 
 export default function SideMenu({ isOpen }) {
@@ -58,7 +60,16 @@ export default function SideMenu({ isOpen }) {
                   className="px-8 transition duration-500 ease-in-out hover:bg-black-30 transform hover:-translate-y-1 hover:scale-110"
                 >
                   <a
-                    href={m.link || "#"}
+                    href={"#"}
+                    // state={{ scrollTo: m.scrollTo }}
+                    onClick={() => {
+                      const scrollToElement = document.querySelector(m.scrollTo)
+                      if (scrollToElement) {
+                        const { top } = getCoords(scrollToElement)
+                        scrollToY(top, 500)
+                      }
+                      // navigate(m.scrollTo, { state: { scrollTo: m.scrollTo } })
+                    }}
                     className={`block py-4 text-white text-sm`}
                   >
                     {m.label}
