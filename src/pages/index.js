@@ -3,6 +3,8 @@ import { SideMenu, ContactForm } from "@components"
 import { useStaticQuery, graphql } from "gatsby"
 import Image from "gatsby-image"
 import { useWindowWidth } from "@hooks"
+import githubIcon from "../images/icons/github.svg"
+import linkedInIcon from "../images/icons/linkedin.svg"
 
 export default () => {
   const data = useStaticQuery(graphql`
@@ -104,15 +106,15 @@ export default () => {
             </div>
             <div className="w-full">
               <h3 className="text-red-700 mb-3">Who am i?</h3>
-              <h2 className="mb-3 font-bold">Lorem ipsum dolor.</h2>
+              <h2 className="mb-3 font-bold">I am a builder.</h2>
               <p className="text-base leading-loose mb-3">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-                enim ad minim veniam, quis nostrud exercitation ullamco laboris
-                nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
-                in reprehenderit in voluptate velit esse cillum dolore eu fugiat
-                nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-                sunt in culpa qui officia deserunt mollit anim id est laborum
+                I love building things and solving problems. I’m focused on
+                implementing simple and easy to use user facing interfaces
+                utilizing React and other frameworks. I have implemented
+                front-end single page applications as well as back-end systems.
+                I have been successful creating solutions with many web
+                technologies including Javascript and React, Gatsby and Graphql,
+                and PHP and Laravel.
               </p>
               <hr className="w-full my-5" />
               <button className="text-sm text-white bg-red-700 p-2 px-4 rounded-full mr-5">
@@ -155,12 +157,9 @@ export default () => {
         >
           <div className="pb-10 lg:pb-0 md:w-2/3">
             <h2 className="text-white text-5xl font-bold mb-10">
-              Let's Work Together!
+              Need Help With Your Mission?
             </h2>
-            <p className="text-white">
-              I am availible for freelance projects. Hire me and get your
-              projects done.
-            </p>
+            <p className="text-white">Hire me and get your projects done.</p>
           </div>
           <div className="mr-5">
             <button className="text-lg text-white bg-red-700 p-2 px-8 rounded-full">
@@ -216,9 +215,28 @@ export default () => {
           className="bg-black-90 border-l border-gray-700 px-20 pt-10 pb-8"
         >
           <div className="flex flex-row justify-around">
-            <p className="text-gray-100">a</p>
-            <p className="text-gray-100">a</p>
-            <p className="text-gray-100">a</p>
+            <p className="text-gray-100">
+              <a
+                href="https://github.com/strickdj"
+                target="_blank"
+                rel="noopener noreferrer"
+                title="Github Profile"
+              >
+                <img alt="github icon" src={githubIcon} />
+              </a>
+            </p>
+            <p className="text-gray-100"></p>
+
+            <p className="text-gray-100">
+              <a
+                href="https://www.linkedin.com/in/daris-strickland-868a9269"
+                target="_blank"
+                rel="noopener noreferrer"
+                title="LinkedIn Profile"
+              >
+                <img alt="LinkedIn icon" src={linkedInIcon} />
+              </a>
+            </p>
           </div>
           <hr className="border-gray-700 my-5" />
           <p className="text-gray-200 text-right text-sm ">
