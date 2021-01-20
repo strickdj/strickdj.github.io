@@ -1,5 +1,5 @@
 import React from "react"
-import SideMenu from "../components/SideMenu"
+import { SideMenu, ContactForm } from "@components"
 import { useStaticQuery, graphql } from "gatsby"
 import Image from "gatsby-image"
 import { useWindowWidth } from "@hooks"
@@ -206,7 +206,9 @@ export default () => {
           <h2 className="text-black text-5xl font-bold mb-3">Contact Me</h2>
           <p className="text-sm mb-10">let's get in touch.</p>
 
-          {/* <ContactForm /> */}
+          <div className="w-full md:w-1/2 lg:w-1/3">
+            <ContactForm />
+          </div>
         </div>
         {/* -------------------------- Footer -------------------------- */}
         <footer

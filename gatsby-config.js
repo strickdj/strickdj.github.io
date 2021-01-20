@@ -101,7 +101,7 @@ module.exports = {
       options: {
         root: "./src",
         aliases: {
-          "@elements": "./components/Elements",
+          "@components": "./components",
           "@hooks": "./hooks",
           "@utils": "./utils",
         },

@@ -15,7 +15,7 @@ const menu = [
   { label: "Contact", link: "#", scrollTo: "#contact" },
 ]
 
-export default function SideMenu({ isOpen, closeMenu }) {
+export function SideMenu({ isOpen, closeMenu }) {
   const data = useStaticQuery(graphql`
     query BlaQuery {
       avatar: file(absolutePath: { regex: "/profile-pic.jpg/" }) {
