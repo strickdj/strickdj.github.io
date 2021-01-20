@@ -15,7 +15,7 @@ const menu = [
   { label: "Contact", link: "#", scrollTo: "#contact" },
 ]
 
-export default function SideMenu({ isOpen }) {
+export default function SideMenu({ isOpen, closeMenu }) {
   const data = useStaticQuery(graphql`
     query BlaQuery {
       avatar: file(absolutePath: { regex: "/profile-pic.jpg/" }) {
@@ -59,21 +59,23 @@ export default function SideMenu({ isOpen }) {
                   key={m.label}
                   className="px-8 transition duration-500 ease-in-out hover:bg-black-30 transform hover:-translate-y-1 hover:scale-110"
                 >
-                  <a
-                    href={"#"}
+                  <button
+                    type="button"
                     // state={{ scrollTo: m.scrollTo }}
                     onClick={() => {
+                      closeMenu()
                       const scrollToElement = document.querySelector(m.scrollTo)
                       if (scrollToElement) {
                         const { top } = getCoords(scrollToElement)
                         scrollToY(top, 500)
                       }
+
                       // navigate(m.scrollTo, { state: { scrollTo: m.scrollTo } })
                     }}
-                    className={`block py-4 text-white text-sm`}
+                    className={`focus:outline-none border-none w-full text-left block py-4 text-white text-sm`}
                   >
                     {m.label}
-                  </a>
+                  </button>
                 </li>
               )
             })}

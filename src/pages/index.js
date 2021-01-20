@@ -23,6 +23,10 @@ export default () => {
 
   const menuOpenOrIsScreenXl = menuOpen || width >= 1280
 
+  function closeMenu() {
+    setMenuOpen(false)
+  }
+
   return (
     <div className="page-layout w-full">
       <div
@@ -31,7 +35,9 @@ export default () => {
         }`}
       >
         <button
-          className="bg-black-90 inline-block text-white p-2 ring-2 ring-transparent focus:outline-none border-none"
+          className={`fixed top-0 bg-black-90 inline-block text-white p-2 ring-2 ring-transparent focus:outline-none border-none ${
+            menuOpenOrIsScreenXl ? "left-64" : "left-0"
+          }`}
           onClick={() => {
             setMenuOpen(!menuOpen)
           }}
@@ -55,7 +61,7 @@ export default () => {
         </button>
       </div>
 
-      <SideMenu isOpen={menuOpenOrIsScreenXl} />
+      <SideMenu isOpen={menuOpenOrIsScreenXl} closeMenu={closeMenu} />
 
       <div className="main-content col-span-full xl:col-start-2 xl:col-span-2">
         {/* -------------------------- Hero -------------------------- */}
@@ -122,7 +128,7 @@ export default () => {
         <div id="technologies" className="bg-gray-100 p-16">
           <h2 className="text-black text-5xl font-bold mb-3">Technologies</h2>
           <p className="text-sm mb-10">tech focus.</p>
-          <div className="grid grid-flow-col grid-cols-3 grid-rows-2 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             <div className="bg-white p-3 border border-gray-400">
               <p>Javascript</p>
               <p>React</p>
