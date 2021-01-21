@@ -103,6 +103,7 @@ module.exports = {
         aliases: {
           "@components": "./components",
           "@hooks": "./hooks",
+          "@images": "./images",
           "@utils": "./utils",
         },
       },

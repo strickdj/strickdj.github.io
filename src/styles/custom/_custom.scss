@@ -46,21 +46,22 @@ img {
 }
 
 blockquote {
-    background: #000000;
-    border-left: 10px solid #ffffff;
-    margin: 1.5em 10px;
-    padding: 0.5em 10px;
-    quotes: "\201C""\201D""\2018""\2019";
+    @apply bg-white border-l-2 border-black-50 my-1 mx-2 py-1 px-2 text-black relative;
+    // quotes: "\201C""\201D""\2018""\2019";
 }
 
-blockquote:before {
-    color: #ffffff;
-    content: open-quote;
-    font-size: 4em;
-    line-height: 0.1em;
-    margin-right: 0.25em;
-    vertical-align: -0.4em;
+blockquote span {
+    @apply block text-right text-lg leading-tight mt-4 uppercase;
 }
+
+// blockquote:before {
+//     color: #ffffff;
+//     content: open-quote;
+//     font-size: 4em;
+//     line-height: 0.1em;
+//     margin-right: 0.25em;
+//     vertical-align: -0.4em;
+// }
 
 blockquote p {
     display: inline;

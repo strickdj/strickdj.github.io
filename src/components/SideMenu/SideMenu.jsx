@@ -2,7 +2,6 @@ import React from "react"
 import { useStaticQuery, graphql } from "gatsby"
 import Image from "gatsby-image"
 import { motion } from "framer-motion"
-import { navigate } from "gatsby"
 import { getCoords, scrollToY } from "@utils"
 
 const menu = [
@@ -10,7 +9,7 @@ const menu = [
   { label: "About", link: "#", scrollTo: "#about" },
   { label: "Tech", link: "#", scrollTo: "#technologies" },
   { label: "Portfolio", link: "#", scrollTo: "#portfolio" },
-  { label: "Clients", link: "#", scrollTo: "#clients" },
+  // { label: "Clients", link: "#", scrollTo: "#clients" },
   { label: "Blog", link: "#", scrollTo: "#blog" },
   { label: "Contact", link: "#", scrollTo: "#contact" },
 ]
@@ -61,7 +60,6 @@ export function SideMenu({ isOpen, closeMenu }) {
                 >
                   <button
                     type="button"
-                    // state={{ scrollTo: m.scrollTo }}
                     onClick={() => {
                       closeMenu()
                       const scrollToElement = document.querySelector(m.scrollTo)
@@ -69,8 +67,6 @@ export function SideMenu({ isOpen, closeMenu }) {
                         const { top } = getCoords(scrollToElement)
                         scrollToY(top, 500)
                       }
-
-                      // navigate(m.scrollTo, { state: { scrollTo: m.scrollTo } })
                     }}
                     className={`focus:outline-none border-none w-full text-left block py-4 text-white text-sm`}
                   >
@@ -105,3 +101,5 @@ export function SideMenu({ isOpen, closeMenu }) {
     </div>
   )
 }
+
+export default SideMenu
