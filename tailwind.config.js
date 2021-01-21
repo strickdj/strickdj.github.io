@@ -1,4 +1,5 @@
 module.exports = {
+  purge: false, // purge is setup in gatsby-config
   theme: {
     extend: {
       colors: {
