@@ -8,7 +8,7 @@ import { useAppState } from "../../appState"
 // tapping outside sidebar closes sidebar and remove button when sidebar is open.
 
 const menu = [
-  { label: "Home", link: "/#home", scrollTo: "#home" },
+  { label: "Home", link: "/", scrollTo: "#home" },
   { label: "About", link: "/#about", scrollTo: "#about" },
   { label: "Portfolio", link: "/#portfolio", scrollTo: "#portfolio" },
   { label: "Tech", link: "/#technologies", scrollTo: "#technologies" },
@@ -17,7 +17,7 @@ const menu = [
   { label: "Contact", link: "/#contact", scrollTo: "#contact" },
 ]
 
-export function SideMenu({ isOpen }) {
+export function SideMenu() {
   const data = useStaticQuery(graphql`
     query BlaQuery {
       avatar: file(absolutePath: { regex: "/profile-pic.jpg/" }) {
@@ -38,18 +38,18 @@ export function SideMenu({ isOpen }) {
     }
   `)
 
-  const { toggleMenu, closeMenu } = useAppState()
+  const { toggleMenu, closeMenu, menuOpen } = useAppState()
   const { author } = data.site.siteMetadata
   return (
     <>
       <div
         className={`absolute col-span-2 flex flex-row items-center justify-end z-30 xl:hidden ${
-          isOpen ? "left-64" : ""
+          menuOpen ? "left-64" : ""
         }`}
       >
         <button
           className={`fixed top-0 bg-black-90 inline-block text-white p-2 ring-2 ring-transparent focus:outline-none border-none ${
-            isOpen ? "left-64" : "left-0"
+            menuOpen ? "left-64" : "left-0"
           }`}
           onClick={() => {
             toggleMenu()
@@ -75,13 +75,13 @@ export function SideMenu({ isOpen }) {
       </div>
       <div
         className={`sidebar absolute top-0 left-0 z-20 xl:block col-start-1 col-end-1 row-span-full xl:relative ${
-          isOpen ? "" : ""
+          menuOpen ? "" : ""
         }`}
       >
         <motion.div
           key="MobileNavigation"
-          initial={{ x: `-100%`, opacity: 0 }}
-          animate={{ x: isOpen ? "0%" : `-100%`, opacity: isOpen ? 1 : 0 }}
+          initial={{ x: menuOpen ? "0%" : `-100%`, opacity: menuOpen ? 1 : 0 }}
+          animate={{ x: menuOpen ? "0%" : `-100%`, opacity: menuOpen ? 1 : 0 }}
           exit={{ x: `-100%`, opacity: 0 }}
           transition={{ ease: "easeInOut" }}
           className="fixed w-64 inset-y-0 overflow-y-scroll bg-black-90 scroll-hidden pt-12"

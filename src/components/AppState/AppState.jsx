@@ -1,9 +1,11 @@
 import React from "react"
-import { useToggle } from "@hooks"
+import { useToggle, useWindowWidth } from "@hooks"
 import { AppContext } from "../../appState"
 
 export function AppState({ children }) {
-  const { isToggled, setIsToggled, toggle } = useToggle(true)
+  const { isToggled, setIsToggled, toggle } = useToggle(false)
+  const width = useWindowWidth()
+  const menuOpenOrIsScreenXl = isToggled || width >= 1280
 
   function closeMenu() {
     setIsToggled(false)
@@ -15,7 +17,7 @@ export function AppState({ children }) {
   return (
     <AppContext.Provider
       value={{
-        menuOpen: isToggled,
+        menuOpen: menuOpenOrIsScreenXl,
         toggleMenu: toggle,
         closeMenu,
         openMenu,
