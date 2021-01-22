@@ -7,7 +7,7 @@ export function Footer() {
   return (
     <footer
       id="footer"
-      className="bg-black-90 border-l border-gray-700 px-20 pt-10 pb-8"
+      className="bg-black-90 border-l border-gray-700 px-5 xl:px-20 pt-10 pb-8"
     >
       <div className="flex flex-row justify-around">
         <p className="text-gray-100">

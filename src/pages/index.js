@@ -108,7 +108,7 @@ export default (props) => {
         </div>
       </div>
       {/* -------------------------- Portfolio -------------------------- */}
-      <div id="portfolio" className="bg-gray-100 p-16">
+      <div id="portfolio" className="bg-gray-100 px-5 py-10 xl:p-16">
         <h2 className="text-black text-5xl font-bold mb-3">Portfolio</h2>
         <p className="text-sm mb-10">showcasing some of my best work.</p>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
@@ -195,7 +195,7 @@ export default (props) => {
         </div>
       </div>
       {/* -------------------------- Technologies -------------------------- */}
-      <div id="technologies" className="bg-gray-100 p-16">
+      <div id="technologies" className="bg-gray-100 px-5 py-10 xl:p-16">
         <h2 className="text-black text-5xl font-bold mb-3">Technologies</h2>
         <p className="text-sm mb-10">tech focus.</p>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
@@ -246,7 +246,7 @@ export default (props) => {
         </div>
       </div> */}
       {/* -------------------------- Blog -------------------------- */}
-      <div id="blog" className="p-16">
+      <div id="blog" className="px-5 py-10 xl:p-16">
         <h2 className="text-black text-5xl font-bold mb-3">Blog</h2>
         <p className="text-sm mb-10">check out my latest blog posts.</p>
 
@@ -281,7 +281,7 @@ export default (props) => {
         </Link>
       </div>
       {/* -------------------------- Contact -------------------------- */}
-      <div id="contact" className="bg-gray-100 p-16">
+      <div id="contact" className="bg-gray-100 px-5 py-10 xl:p-16">
         <h2 className="text-black text-5xl font-bold mb-3">Contact Me</h2>
         <p className="text-sm mb-10">let's get in touch.</p>
 
