@@ -50,7 +50,7 @@ export function SideMenu({ isOpen, closeMenu }) {
         transition={{ ease: "easeInOut" }}
         className="fixed w-64 inset-y-0 overflow-y-scroll bg-black-90 scroll-hidden pt-12"
       >
-        <div className="sidebar__inner h-full flex flex-col items-start">
+        <div className="sidebar__inner flex flex-col items-start">
           <ul className="w-full flex flex-col items-stretch mb-5">
             {menu.map((m, i) => {
               return (
@@ -85,16 +85,20 @@ export function SideMenu({ isOpen, closeMenu }) {
                 marginBottom: 0,
                 minWidth: 110,
                 minHeight: 110,
+                maxHeight: "100%",
               }}
               imgStyle={{
                 minWidth: 110,
                 minHeight: 110,
+                maxHeight: "100%",
               }}
             />
           </div>
 
           <div className="pl-8">
-            <h2 className={`text-white mb-4`}>Daris Strickland</h2>
+            <h2 className={`text-white hidden sm:block mb-4`}>
+              Daris Strickland
+            </h2>
           </div>
         </div>
       </motion.div>
