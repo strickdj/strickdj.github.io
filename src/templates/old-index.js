@@ -1,8 +1,7 @@
 import React from "react"
 import { Link, graphql } from "gatsby"
 
-import { Layout } from "@components"
-import SEO from "../components/seo"
+import { Layout, Seo } from "@components"
 
 const BlogIndex = ({ data, location }) => {
   const siteTitle = data.site.siteMetadata.title
@@ -10,7 +9,7 @@ const BlogIndex = ({ data, location }) => {
 
   return (
     <Layout location={location} title={siteTitle}>
-      <SEO title="All posts" />
+      <Seo title="All posts" />
 
       {posts.map(({ node }) => {
         const title = node.frontmatter.title || node.fields.slug

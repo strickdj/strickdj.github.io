@@ -1,7 +1,7 @@
 import React, { useState } from "react"
 import { Link } from "gatsby"
 
-const NavButton = (props) => {
+export const NavButton = (props) => {
   const { isCurrent, className, href, children, ...rest } = props
 
   const classes =

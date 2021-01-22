@@ -1,8 +1,7 @@
 import React from "react"
 import { graphql } from "gatsby"
 
-import { Layout } from "@components"
-import SEO from "../components/seo"
+import { Layout, Seo } from "@components"
 
 const KitchenSinkPage = ({ data, location }) => {
   const siteTitle = data.site.siteMetadata.title
@@ -22,7 +21,7 @@ const KitchenSinkPage = ({ data, location }) => {
   `
   return (
     <Layout location={location} title={siteTitle}>
-      <SEO title="Kitchen Sink" />
+      <Seo title="Kitchen Sink" />
 
       <div>
         <h1>Kitchen Sink</h1>

@@ -2,7 +2,7 @@ import React from "react"
 import { useStaticQuery, graphql, Link } from "gatsby"
 import Image from "gatsby-image"
 import { motion } from "framer-motion"
-import { getCoords, scrollToY } from "@utils"
+// import { getCoords, scrollToY } from "@utils"
 
 // ToDo:
 // menu open state needs to persist across different pages.

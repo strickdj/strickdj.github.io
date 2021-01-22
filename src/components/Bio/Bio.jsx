@@ -2,7 +2,7 @@ import React from "react"
 import { useStaticQuery, graphql } from "gatsby"
 import Image from "gatsby-image"
 
-const Bio = () => {
+export const Bio = () => {
   const data = useStaticQuery(graphql`
     query BioQuery {
       avatar: file(absolutePath: { regex: "/profile-pic.jpg/" }) {
@@ -25,7 +25,7 @@ const Bio = () => {
 
   const { author } = data.site.siteMetadata
   return (
-    <div>
+    <div className="flex">
       <Image
         fixed={data.avatar.childImageSharp.fixed}
         alt={author.name}
@@ -38,8 +38,8 @@ const Bio = () => {
           borderRadius: `50%`,
         }}
       />
-      <p>
-        written by <strong>{author.name}</strong> {author.summary}
+      <p className="text-base">
+        written by <br /> <strong>{author.name}</strong> {author.summary}
       </p>
     </div>
   )

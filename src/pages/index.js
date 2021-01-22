@@ -1,5 +1,5 @@
 import React from "react"
-import { ContactForm, Layout } from "@components"
+import { ContactForm, Layout, Seo } from "@components"
 import { Link, graphql } from "gatsby"
 import Image from "gatsby-image"
 import { getCoords, scrollToY } from "@utils"
@@ -28,7 +28,8 @@ export default (props) => {
   } = props
 
   return (
-    <Layout>
+    <Layout location={location}>
+      <Seo title={pageTitle} />
       {/* -------------------------- Hero -------------------------- */}
       <div
         id="home"
