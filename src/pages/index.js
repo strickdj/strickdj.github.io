@@ -300,10 +300,10 @@ export const IndexPageQuery = graphql`
         title
       }
     }
-    insidePassage: file(absolutePath: { regex: "/inside-passage.webp/" }) {
+    insidePassage: file(absolutePath: { regex: "/inside-passage.jpeg/" }) {
       childImageSharp {
         fluid(maxWidth: 1440) {
-          ...GatsbyImageSharpFluid
+          ...GatsbyImageSharpFluid_withWebp
         }
       }
     }
