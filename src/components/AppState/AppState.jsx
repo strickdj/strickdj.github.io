@@ -5,7 +5,8 @@ import { AppContext } from "../../appState"
 export function AppState({ children }) {
   const { isToggled, setIsToggled, toggle } = useToggle(false)
   const width = useWindowWidth()
-  const menuOpenOrIsScreenXl = isToggled || width >= 1280
+  const isScreenXl = width >= 1280
+  const menuOpenOrIsScreenXl = isToggled || isScreenXl
 
   function closeMenu() {
     setIsToggled(false)
@@ -19,6 +20,7 @@ export function AppState({ children }) {
       value={{
         menuOpen: menuOpenOrIsScreenXl,
         toggleMenu: toggle,
+        isScreenXl,
         closeMenu,
         openMenu,
       }}

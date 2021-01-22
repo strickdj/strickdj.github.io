@@ -2,10 +2,8 @@ import React from "react"
 import { useStaticQuery, graphql, Link } from "gatsby"
 import Image from "gatsby-image"
 import { motion } from "framer-motion"
+import { useOnClickOutside } from "@hooks"
 import { useAppState } from "../../appState"
-
-// ToDo:
-// tapping outside sidebar closes sidebar and remove button when sidebar is open.
 
 const menu = [
   { label: "Home", link: "/", scrollTo: "#home" },
@@ -38,18 +36,26 @@ export function SideMenu() {
     }
   `)
 
-  const { toggleMenu, closeMenu, menuOpen } = useAppState()
+  const { toggleMenu, closeMenu, menuOpen, isScreenXl } = useAppState()
+  const wrapperRef = React.useRef(null)
+  useOnClickOutside(wrapperRef, () => {
+    if (!isScreenXl && menuOpen) {
+      closeMenu()
+    }
+  })
+
   const { author } = data.site.siteMetadata
   return (
     <>
       <div
+        ref={wrapperRef}
         className={`absolute col-span-2 flex flex-row items-center justify-end z-30 xl:hidden ${
           menuOpen ? "left-64" : ""
         }`}
       >
         <button
           className={`fixed top-0 bg-black-90 inline-block text-white p-2 ring-2 ring-transparent focus:outline-none border-none ${
-            menuOpen ? "left-64" : "left-0"
+            menuOpen ? "hidden" : "left-0"
           }`}
           onClick={() => {
             toggleMenu()
