@@ -1,3 +1,5 @@
+import React from "react"
+import { AppState } from "@components"
 import "whatwg-fetch"
 
 // custom typefaces
@@ -26,4 +28,8 @@ export const shouldUpdateScroll = (props) => {
       return false
     }
   }
+}
+
+export const wrapRootElement = ({ element }) => {
+  return <AppState>{element}</AppState>
 }

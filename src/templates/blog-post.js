@@ -1,9 +1,6 @@
 import React from "react"
 import { Link, graphql } from "gatsby"
-
-// import  from "../components/bio"
 import { Layout, Seo, Bio } from "@components"
-// import  from "../components/seo"
 
 const BlogPostTemplate = ({ data, pageContext, location }) => {
   const post = data.markdownRemark
