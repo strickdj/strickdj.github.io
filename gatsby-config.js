@@ -113,7 +113,7 @@ module.exports = {
       options: {
         // Either `code` or `selfHostUrl` is required.
         // REQUIRED IF USING HOSTED GOATCOUNTER! https://[my_code].goatcounter.com
-        code: "https://strickland.goatcounter.com",
+        code: "strickland",
         // Delays sending pageview hits on route update (in milliseconds)
         // pageTransitionDelay: 0,
 
