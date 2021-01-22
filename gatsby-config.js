@@ -108,6 +108,22 @@ module.exports = {
         },
       },
     },
+    {
+      resolve: `gatsby-plugin-goatcounter`,
+      options: {
+        // Either `code` or `selfHostUrl` is required.
+        // REQUIRED IF USING HOSTED GOATCOUNTER! https://[my_code].goatcounter.com
+        code: "https://strickland.goatcounter.com",
+        // Delays sending pageview hits on route update (in milliseconds)
+        // pageTransitionDelay: 0,
+
+        // Allow requests from local addresses (localhost, 192.168.0.0, etc.)
+        // for testing the integration locally.
+        // TIP: set up a `Additional Site` in your GoatCounter settings
+        // and use its code conditionally when you `allowLocal`, example below
+        allowLocal: false,
+      },
+    },
 
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
