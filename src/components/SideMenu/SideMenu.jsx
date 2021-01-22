@@ -11,7 +11,7 @@ const menu = [
   { label: "Portfolio", link: "/#portfolio", scrollTo: "#portfolio" },
   { label: "Tech", link: "/#technologies", scrollTo: "#technologies" },
   // { label: "Clients", link: "/#clients", scrollTo: "#clients" },
-  { label: "Blog", link: "/#home", scrollTo: "#blog" },
+  { label: "Blog", link: "/#blog", scrollTo: "#blog" },
   { label: "Contact", link: "/#contact", scrollTo: "#contact" },
 ]
 
