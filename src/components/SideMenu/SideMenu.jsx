@@ -1,17 +1,21 @@
 import React from "react"
-import { useStaticQuery, graphql } from "gatsby"
+import { useStaticQuery, graphql, Link } from "gatsby"
 import Image from "gatsby-image"
 import { motion } from "framer-motion"
 import { getCoords, scrollToY } from "@utils"
 
+// ToDo:
+// menu open state needs to persist across different pages.
+// tapping outside sidebar closes sidebar and remove button when sidebar is open.
+
 const menu = [
-  { label: "Home", link: "#", scrollTo: "#home" },
-  { label: "About", link: "#", scrollTo: "#about" },
-  { label: "Tech", link: "#", scrollTo: "#technologies" },
-  { label: "Portfolio", link: "#", scrollTo: "#portfolio" },
-  // { label: "Clients", link: "#", scrollTo: "#clients" },
-  { label: "Blog", link: "#", scrollTo: "#blog" },
-  { label: "Contact", link: "#", scrollTo: "#contact" },
+  { label: "Home", link: "/#home", scrollTo: "#home" },
+  { label: "About", link: "/#about", scrollTo: "#about" },
+  { label: "Tech", link: "/#technologies", scrollTo: "#technologies" },
+  { label: "Portfolio", link: "/#portfolio", scrollTo: "#portfolio" },
+  // { label: "Clients", link: "/#clients", scrollTo: "#clients" },
+  { label: "Blog", link: "/#home", scrollTo: "#blog" },
+  { label: "Contact", link: "/#contact", scrollTo: "#contact" },
 ]
 
 export function SideMenu({ isOpen, closeMenu }) {
@@ -58,20 +62,14 @@ export function SideMenu({ isOpen, closeMenu }) {
                   key={m.label}
                   className="px-8 transition duration-500 ease-in-out hover:bg-black-30 transform hover:-translate-y-1 hover:scale-110"
                 >
-                  <button
-                    type="button"
-                    onClick={() => {
-                      closeMenu()
-                      const scrollToElement = document.querySelector(m.scrollTo)
-                      if (scrollToElement) {
-                        const { top } = getCoords(scrollToElement)
-                        scrollToY(top, 500)
-                      }
-                    }}
+                  <Link
+                    to={m.link}
+                    state={{ scrollTo: m.scrollTo }}
+                    onClick={closeMenu}
                     className={`focus:outline-none border-none w-full text-left block py-4 text-white text-sm`}
                   >
                     {m.label}
-                  </button>
+                  </Link>
                 </li>
               )
             })}
