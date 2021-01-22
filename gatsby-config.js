@@ -22,7 +22,7 @@ module.exports = {
     },
     description: ``, // todo: write a blog description
     siteUrl: `https://darisstrickland.com/`,
-    social: {},
+    lang: "en",
   },
   plugins: [
     {
