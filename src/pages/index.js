@@ -1,6 +1,6 @@
 import React from "react"
 import { ContactForm, Layout, Seo } from "@components"
-import { Link, graphql } from "gatsby"
+import { Link, graphql, navigate } from "gatsby"
 import Image from "gatsby-image"
 import { getCoords, scrollToY } from "@utils"
 
@@ -115,10 +115,18 @@ export default (props) => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           <div className="bg-white p-3 border border-gray-400">
             <div className="mb-4">
-              <Image
-                fluid={royalUnitedFluid}
-                alt="Royal United Mortgage website screenshot"
-              />
+              <a
+                href="https://www.royalunitedmortgage.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                title="Royal United Mortgage"
+                className="block"
+              >
+                <Image
+                  fluid={royalUnitedFluid}
+                  alt="Royal United Mortgage website screenshot"
+                />
+              </a>
             </div>
             <h2>
               <a
@@ -134,7 +142,15 @@ export default (props) => {
           </div>
           <div className="bg-white p-3 border border-gray-400">
             <div className="mb-4">
-              <Image fluid={hc1Fluid} alt="hc1 website screenshot." />
+              <a
+                href="https://www.hc1.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                title="hc1"
+                className="block"
+              >
+                <Image fluid={hc1Fluid} alt="hc1 website screenshot." />
+              </a>
             </div>
             <h2>
               <a
@@ -150,10 +166,18 @@ export default (props) => {
           </div>
           <div className="bg-white p-3 border border-gray-400">
             <div className="mb-4">
-              <Image
-                fluid={indyChamberFluid}
-                alt="Indianapolis Chamber of Commerce website screenshot."
-              />
+              <a
+                href="https://indychamber.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                title="Indianapolis Chamber of Commerce"
+                className="block"
+              >
+                <Image
+                  fluid={indyChamberFluid}
+                  alt="Indianapolis Chamber of Commerce website screenshot."
+                />
+              </a>
             </div>
             <h2>
               <a
@@ -257,7 +281,10 @@ export default (props) => {
             return (
               <article
                 key={node.fields.slug}
-                className="bg-white p-3 border border-gray-400"
+                className="bg-white p-3 border border-gray-400 cursor-pointer"
+                onClick={() => {
+                  navigate(node.fields.slug)
+                }}
               >
                 <header>
                   <h3>
@@ -277,9 +304,9 @@ export default (props) => {
           })}
         </div>
 
-        <Link to="/" className="text-sm bg-gray-300 p-2 px-4 rounded-full">
+        {/* <Link to="/" className="text-sm bg-gray-300 p-2 px-4 rounded-full">
           Read More
-        </Link>
+        </Link> */}
       </div>
       {/* -------------------------- Contact -------------------------- */}
       <div id="contact" className="bg-gray-100 px-5 py-10 xl:p-16">
